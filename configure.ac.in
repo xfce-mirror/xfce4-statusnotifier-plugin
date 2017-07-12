@@ -1,0 +1,106 @@
+dnl xfce4-statusnotifier-plugin - A Status Notifier plugin for the Xfce panel
+dnl
+dnl 2017 Viktor Odintsev <ninetls@xfce.org>
+dnl
+
+dnl ***************************
+dnl *** Version information ***
+dnl ***************************
+m4_define([sn_version_major], [0])
+m4_define([sn_version_minor], [0])
+m4_define([sn_version_micro], [9])
+m4_define([sn_version_nano],  [])
+m4_define([sn_version_build], [@REVISION@])
+m4_define([sn_version_tag],   [git])
+m4_define([sn_version], [sn_version_major().sn_version_minor().sn_version_micro()ifelse(sn_version_nano(), [], [], [.sn_version_nano()])ifelse(sn_version_tag(), [git], [sn_version_tag()-sn_version_build()], [sn_version_tag()])])
+
+dnl ***************************
+dnl *** Initialize autoconf ***
+dnl ***************************
+AC_COPYRIGHT([Copyright (c) 2017
+        The Xfce development team. All rights reserved.])
+AC_INIT([xfce4-statusnotifier-plugin], [sn_version], [https://bugzilla.xfce.org/], [xfce4-statusnotifier-plugin])
+AC_PREREQ([2.50])
+AC_CONFIG_MACRO_DIRS([m4])
+AC_CONFIG_HEADERS([config.h])
+AC_CANONICAL_TARGET()
+AC_REVISION([@REVISION@])
+
+dnl ***************************
+dnl *** Initialize automake ***
+dnl ***************************
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
+AM_MAINTAINER_MODE()
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
+dnl ********************************
+dnl *** Check for basic programs ***
+dnl ********************************
+AC_PROG_CC()
+AC_PROG_LD()
+AC_PROG_INSTALL()
+IT_PROG_INTLTOOL([0.35.0])
+LT_PREREQ([2.2.6])
+LT_INIT([disable-static])
+
+dnl ************************************
+dnl *** Check for standard functions ***
+dnl ************************************
+AC_HEADER_STDC
+AC_CHECK_FUNCS([])
+
+dnl ******************************
+dnl *** Check for i18n support ***
+dnl ******************************
+XDT_I18N([@LINGUAS@])
+
+dnl *******************************
+dnl *** Check for X11 installed ***
+dnl *******************************
+XDT_CHECK_LIBX11_REQUIRE()
+
+dnl *******************************
+dnl *** Check for gdbus-codegen ***
+dnl *******************************
+AC_ARG_VAR([GDBUS_CODEGEN], [D-Bus code and documentation generator from XML D-Bus interface definitions])
+AC_PATH_PROG([GDBUS_CODEGEN], [gdbus-codegen], [no])
+if test x"$GDBUS_CODEGEN" = x"no"; then
+        AC_MSG_ERROR([could not find gdbus-codegen in \$PATH. You can run
+        ./configure GDBUS_CODEGEN=/path/to/gdbus-codegen to define
+        a custom location for it.])
+fi
+
+dnl ***********************************
+dnl *** Check for required packages ***
+dnl ***********************************
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.20.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.12.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.12.0])
+XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-2.0], [4.12.0])
+XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.12.0])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.24.0])
+PKG_CHECK_MODULES([GIO_UNIX], [gio-unix-2.0 >= 2.24.0])
+XDT_CHECK_PACKAGE([DBUSMENU], [dbusmenu-gtk3-0.4], [16.04.0])
+
+dnl ***********************************
+dnl *** Check for debugging support ***
+dnl ***********************************
+XDT_FEATURE_DEBUG()
+
+AC_OUTPUT([
+Makefile
+icons/Makefile
+icons/48x48/Makefile
+icons/scalable/Makefile
+panel-plugin/Makefile
+po/Makefile.in
+])
+
+dnl ***************************
+dnl *** Print configuration ***
+dnl ***************************
+echo
+echo "Build Configuration:"
+echo
+echo "* Debug Support:        $enable_debug"
+echo

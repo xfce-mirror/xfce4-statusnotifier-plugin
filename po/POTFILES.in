@@ -1,0 +1,7 @@
+panel-plugin/sn.desktop.in
+panel-plugin/sn-box.c
+panel-plugin/sn-button.c
+panel-plugin/sn-config.c
+panel-plugin/sn-dialog.c
+panel-plugin/sn-dialog.glade
+panel-plugin/sn-plugin.c
