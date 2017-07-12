@@ -30,7 +30,9 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/xfce-panel-plugin.h>
 #include <xfconf/xfconf.h>
+#ifdef XFCONF_LEGACY
 #include <dbus/dbus-glib.h>
+#endif
 
 #include "sn-plugin.h"
 #include "sn-config.h"
@@ -110,10 +112,9 @@ enum
 static guint sn_config_signals[LAST_SIGNAL] = { 0, };
 
 
+#ifdef XFCONF_LEGACY
 
 #define XFCE_TYPE_SN_CONFIG_VALUE_ARRAY (sn_config_value_array_get_type ())
-
-
 
 static GType
 sn_config_value_array_get_type (void)
@@ -129,6 +130,12 @@ sn_config_value_array_get_type (void)
 
   return type__volatile;
 }
+
+#else
+
+#define XFCE_TYPE_SN_CONFIG_VALUE_ARRAY G_TYPE_PTR_ARRAY
+
+#endif
 
 
 
