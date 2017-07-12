@@ -42,6 +42,7 @@ void                   sn_item_invalidate                      (SnItem          
 const gchar           *sn_item_get_name                        (SnItem                  *item);
 
 void                   sn_item_get_icon                        (SnItem                  *item,
+                                                                const gchar            **theme_path,
                                                                 const gchar            **icon_name,
                                                                 GdkPixbuf              **icon_pixbuf,
                                                                 const gchar            **overlay_icon_name,

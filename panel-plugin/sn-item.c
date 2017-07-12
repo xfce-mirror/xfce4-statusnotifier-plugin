@@ -879,6 +879,7 @@ sn_item_get_name (SnItem *item)
 
 void
 sn_item_get_icon (SnItem       *item,
+                  const gchar **theme_path,
                   const gchar **icon_name,
                   GdkPixbuf   **icon_pixbuf,
                   const gchar **overlay_icon_name,
@@ -906,6 +907,9 @@ sn_item_get_icon (SnItem       *item,
 
   if (overlay_icon_pixbuf != NULL)
     *overlay_icon_pixbuf = item->overlay_icon_pixbuf;
+
+  if (theme_path != NULL)
+    *theme_path = item->icon_theme_path;
 }
 
 

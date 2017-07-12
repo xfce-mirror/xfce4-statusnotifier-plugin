@@ -227,6 +227,7 @@ sn_icon_box_finalize (GObject *object)
 static void
 sn_icon_box_apply_icon (GtkWidget    *image,
                         GtkIconTheme *icon_theme,
+                        GtkIconTheme *icon_theme_from_path,
                         const gchar  *icon_name,
                         GdkPixbuf    *icon_pixbuf,
                         gint          icon_size)
@@ -262,6 +263,13 @@ sn_icon_box_apply_icon (GtkWidget    *image,
               else
                 work_icon_name = g_strdup (&s1[1]);
             }
+        }
+
+      if (work_pixbuf == NULL && icon_theme_from_path != NULL)
+        {
+          work_pixbuf = gtk_icon_theme_load_icon (icon_theme_from_path,
+                                                  sn_preferred_name (),
+                                                  icon_size, 0, NULL);
         }
 
       if (work_pixbuf == NULL)
@@ -331,21 +339,32 @@ sn_icon_box_icon_changed (GtkWidget *widget)
   GdkPixbuf    *icon_pixbuf;
   const gchar  *overlay_icon_name;
   GdkPixbuf    *overlay_icon_pixbuf;
+  const gchar  *theme_path;
   GtkIconTheme *icon_theme;
+  GtkIconTheme *icon_theme_from_path = NULL;
   gint          icon_size;
 
   box = XFCE_SN_ICON_BOX (widget);
   icon_theme = gtk_icon_theme_get_for_screen (gtk_widget_get_screen (GTK_WIDGET (widget)));
   icon_size = sn_config_get_icon_size (box->config);
 
-  sn_item_get_icon (box->item,
+  sn_item_get_icon (box->item, &theme_path,
                     &icon_name, &icon_pixbuf,
                     &overlay_icon_name, &overlay_icon_pixbuf);
 
-  sn_icon_box_apply_icon (box->icon, icon_theme,
+  if (theme_path != NULL)
+    {
+      icon_theme_from_path = gtk_icon_theme_new ();
+      gtk_icon_theme_prepend_search_path (icon_theme_from_path, theme_path);
+    }
+
+  sn_icon_box_apply_icon (box->icon, icon_theme, icon_theme_from_path,
                           icon_name, icon_pixbuf, icon_size);
-  sn_icon_box_apply_icon (box->overlay, icon_theme,
+  sn_icon_box_apply_icon (box->overlay, icon_theme, icon_theme_from_path,
                           overlay_icon_name, overlay_icon_pixbuf, icon_size);
+
+  if (icon_theme_from_path != NULL)
+    g_object_unref (icon_theme_from_path);
 }
 
 
