@@ -232,26 +232,59 @@ sn_icon_box_apply_icon (GtkWidget    *image,
                         gint          icon_size)
 {
   GtkIconInfo *icon_info;
+  GdkPixbuf   *work_pixbuf = NULL;
+  gchar       *work_icon_name = FALSE;
   gboolean     use_pixbuf = TRUE;
   gint         width, height;
+  gchar       *s1, *s2;
 
   gtk_image_clear (GTK_IMAGE (image));
 
+  #define sn_preferred_name() (work_icon_name != NULL ? work_icon_name : icon_name)
+  #define sn_preferred_pixbuf() (work_pixbuf != NULL ? work_pixbuf : icon_pixbuf)
+
   if (icon_name != NULL)
     {
-      icon_info = gtk_icon_theme_lookup_icon (icon_theme, icon_name, 16, 0);
-      if (icon_info != NULL)
+      if (icon_name[0] =='/')
         {
-          gtk_image_set_from_icon_name (GTK_IMAGE (image), icon_name, GTK_ICON_SIZE_BUTTON);
-          g_object_unref (icon_info);
-          use_pixbuf = FALSE;
+          /* it's a path to file */
+          if (g_file_test (icon_name, G_FILE_TEST_IS_REGULAR))
+            work_pixbuf = gdk_pixbuf_new_from_file (icon_name, NULL);
+
+          if (work_pixbuf == NULL)
+            {
+              /* try to extract icon name from path */
+              s1 = g_strrstr (icon_name, "/");
+              s2 = g_strrstr (icon_name, ".");
+
+              if (s2 != NULL)
+                work_icon_name = g_strndup (&s1[1], (gint) (s2 - s1) - 1);
+              else
+                work_icon_name = g_strdup (&s1[1]);
+            }
+        }
+
+      if (work_pixbuf == NULL)
+        {
+          icon_info = gtk_icon_theme_lookup_icon (icon_theme,
+                                                  sn_preferred_name (),
+                                                  16, 0);
+          if (icon_info != NULL)
+            {
+              gtk_image_set_from_icon_name (GTK_IMAGE (image),
+                                            sn_preferred_name (),
+                                            GTK_ICON_SIZE_BUTTON);
+              g_object_unref (icon_info);
+              use_pixbuf = FALSE;
+            }
         }
     }
 
-  if (use_pixbuf && icon_pixbuf != NULL)
+  if (use_pixbuf && sn_preferred_pixbuf () != NULL)
     {
-      width = gdk_pixbuf_get_width (icon_pixbuf);
-      height = gdk_pixbuf_get_height (icon_pixbuf);
+      width = gdk_pixbuf_get_width (sn_preferred_pixbuf ());
+      height = gdk_pixbuf_get_height (sn_preferred_pixbuf ());
+
       if (width > icon_size || height > icon_size)
         {
           /* scale pixbuf */
@@ -265,16 +298,25 @@ sn_icon_box_apply_icon (GtkWidget    *image,
               width = icon_size * width / height;
               height = icon_size;
             }
-          icon_pixbuf = gdk_pixbuf_scale_simple (icon_pixbuf,
+          icon_pixbuf = gdk_pixbuf_scale_simple (sn_preferred_pixbuf (),
                                                  width, height, GDK_INTERP_BILINEAR);
           gtk_image_set_from_pixbuf (GTK_IMAGE (image), icon_pixbuf);
           g_object_unref (icon_pixbuf);
         }
       else
         {
-          gtk_image_set_from_pixbuf (GTK_IMAGE (image), icon_pixbuf);
+          gtk_image_set_from_pixbuf (GTK_IMAGE (image), sn_preferred_pixbuf ());
         }
     }
+
+  #undef sn_preferred_pixbuf
+  #undef sn_preferred_name
+
+  if (work_pixbuf != NULL)
+    g_object_unref (work_pixbuf);
+
+  if (work_icon_name != NULL)
+    g_free (work_icon_name);
 
   gtk_image_set_pixel_size (GTK_IMAGE (image), icon_size);
 }
