@@ -196,10 +196,10 @@ sn_icon_box_new (SnItem   *item,
   gtk_widget_set_parent (box->overlay, GTK_WIDGET (box));
   gtk_widget_show (box->overlay);
 
-  box->config_notify_icon_size_handler = 
+  box->config_notify_icon_size_handler =
     g_signal_connect_swapped (config, "notify::icon-size",
                               G_CALLBACK (sn_icon_box_icon_changed), box);
-  box->item_icon_changed_handler = 
+  box->item_icon_changed_handler =
     g_signal_connect_swapped (item, "icon-changed",
                               G_CALLBACK (sn_icon_box_icon_changed), box);
   sn_icon_box_icon_changed (GTK_WIDGET (box));
@@ -238,6 +238,7 @@ sn_icon_box_apply_icon (GtkWidget    *image,
   gboolean     use_pixbuf = TRUE;
   gint         width, height;
   gchar       *s1, *s2;
+  gint         max_size = icon_size;
 
   gtk_image_clear (GTK_IMAGE (image));
 
@@ -269,7 +270,7 @@ sn_icon_box_apply_icon (GtkWidget    *image,
         {
           work_pixbuf = gtk_icon_theme_load_icon (icon_theme_from_path,
                                                   sn_preferred_name (),
-                                                  icon_size, 0, NULL);
+                                                  -1, 0, NULL);
         }
 
       if (work_pixbuf == NULL)
@@ -293,10 +294,10 @@ sn_icon_box_apply_icon (GtkWidget    *image,
       width = gdk_pixbuf_get_width (sn_preferred_pixbuf ());
       height = gdk_pixbuf_get_height (sn_preferred_pixbuf ());
 
-      if (width > icon_size || height > icon_size)
+      if (width > icon_size && height > icon_size)
         {
           /* scale pixbuf */
-          if (width > height)
+          if (height > width)
             {
               height = icon_size * height / width;
               width = icon_size;
@@ -306,6 +307,7 @@ sn_icon_box_apply_icon (GtkWidget    *image,
               width = icon_size * width / height;
               height = icon_size;
             }
+
           icon_pixbuf = gdk_pixbuf_scale_simple (sn_preferred_pixbuf (),
                                                  width, height, GDK_INTERP_BILINEAR);
           gtk_image_set_from_pixbuf (GTK_IMAGE (image), icon_pixbuf);
@@ -326,7 +328,7 @@ sn_icon_box_apply_icon (GtkWidget    *image,
   if (work_icon_name != NULL)
     g_free (work_icon_name);
 
-  gtk_image_set_pixel_size (GTK_IMAGE (image), icon_size);
+  gtk_image_set_pixel_size (GTK_IMAGE (image), max_size);
 }
 
 
@@ -372,13 +374,24 @@ sn_icon_box_icon_changed (GtkWidget *widget)
 static void
 sn_icon_box_get_preferred_size (GtkWidget *widget,
                                 gint      *minimum_size,
-                                gint      *natural_size)
+                                gint      *natural_size,
+                                gboolean   horizontal)
 {
   SnIconBox      *box = XFCE_SN_ICON_BOX (widget);
   gint            icon_size;
   GtkRequisition  child_req;
+  GdkPixbuf      *pixbuf1, *pixbuf2;
 
   icon_size = sn_config_get_icon_size (box->config);
+
+  pixbuf1 = gtk_image_get_pixbuf (GTK_IMAGE (box->icon));
+  pixbuf2 = gtk_image_get_pixbuf (GTK_IMAGE (box->overlay));
+  if (pixbuf2 != NULL && (pixbuf1 == NULL ||
+      gdk_pixbuf_get_width (pixbuf2) > gdk_pixbuf_get_width (pixbuf1) ||
+      gdk_pixbuf_get_height (pixbuf2) > gdk_pixbuf_get_height (pixbuf1)))
+    {
+      pixbuf1 = pixbuf2;
+    }
 
   if (box->icon != NULL)
     gtk_widget_get_preferred_size (box->icon, NULL, &child_req);
@@ -390,7 +403,17 @@ sn_icon_box_get_preferred_size (GtkWidget *widget,
     *minimum_size = icon_size;
 
   if (natural_size != NULL)
-    *natural_size = icon_size;
+    {
+      *natural_size = 0;
+      if (pixbuf1 != NULL)
+        {
+          if (horizontal)
+            *natural_size = gdk_pixbuf_get_width (pixbuf1);
+          else
+            *natural_size = gdk_pixbuf_get_height (pixbuf1);
+        }
+      *natural_size = MAX (*natural_size, icon_size);
+    }
 }
 
 
@@ -400,7 +423,7 @@ sn_icon_box_get_preferred_width (GtkWidget *widget,
                                  gint      *minimum_width,
                                  gint      *natural_width)
 {
-  sn_icon_box_get_preferred_size (widget, minimum_width, natural_width);
+  sn_icon_box_get_preferred_size (widget, minimum_width, natural_width, TRUE);
 }
 
 
@@ -410,7 +433,7 @@ sn_icon_box_get_preferred_height (GtkWidget *widget,
                                   gint      *minimum_height,
                                   gint      *natural_height)
 {
-  sn_icon_box_get_preferred_size (widget, minimum_height, natural_height);
+  sn_icon_box_get_preferred_size (widget, minimum_height, natural_height, FALSE);
 }
 
 

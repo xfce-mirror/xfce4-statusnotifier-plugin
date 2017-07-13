@@ -54,10 +54,6 @@ static void                  sn_box_forall                           (GtkContain
 
 static GType                 sn_box_child_type                       (GtkContainer            *container);
 
-static void                  sn_box_get_preferred_length             (GtkWidget               *widget,
-                                                                      gint                    *minimal_length,
-                                                                      gint                    *natural_length);
-
 static void                  sn_box_get_preferred_width              (GtkWidget               *widget,
                                                                       gint                    *minimal_width,
                                                                       gint                    *natural_width);
@@ -314,17 +310,22 @@ sn_box_child_type (GtkContainer *container)
 
 
 static void
-sn_box_get_preferred_length (GtkWidget *widget,
+sn_box_measure_and_allocate (GtkWidget *widget,
                              gint      *minimum_length,
-                             gint      *natural_length)
+                             gint      *natural_length,
+                             gboolean   allocate,
+                             gint       x0,
+                             gint       y0,
+                             gboolean   horizontal)
 {
-  SnBox           *box = XFCE_SN_BOX (widget);
-  SnButton        *button;
-  GList           *known_items, *li, *li_int, *li_tmp;
-  gint             panel_size, icon_size, size, nrows;
-  gboolean         single_row, square_icons;
-  gint             x, index;
-  GtkRequisition   child_req;
+  SnBox          *box = XFCE_SN_BOX (widget);
+  SnButton       *button;
+  GList          *known_items, *li, *li_int, *li_tmp;
+  gint            panel_size, icon_size, hx_size, hy_size, nrows;
+  gboolean        single_row, single_horizontal, square_icons;
+  gint            total_length, column_length, item_length, row;
+  GtkRequisition  child_req;
+  GtkAllocation   child_alloc;
 
   panel_size = sn_config_get_panel_size (box->config);
   icon_size = sn_config_get_icon_size (box->config);
@@ -333,17 +334,20 @@ sn_box_get_preferred_length (GtkWidget *widget,
   icon_size += 2; /* additional padding */
   if (square_icons)
     {
-      nrows = MAX (1, sn_config_get_nrows (box->config));
-      size = panel_size / (single_row ? 1 : nrows);
+      nrows = single_row ? 1 : MAX (1, sn_config_get_nrows (box->config));
+      hx_size = hy_size = panel_size / nrows;
     }
   else
     {
-      size = MIN (icon_size, panel_size);
-      nrows = single_row ? 1 : MAX (1, panel_size / size);
+      hx_size = MIN (icon_size, panel_size);
+      nrows = single_row ? 1 : MAX (1, panel_size / hx_size);
+      hy_size = panel_size / nrows;
     }
 
-  x = 0;
-  index = 0;
+  total_length = 0;
+  column_length = 0;
+  item_length = 0;
+  row = 0;
 
   known_items = sn_config_get_known_items (box->config);
   for (li = known_items; li != NULL; li = li->next)
@@ -360,18 +364,63 @@ sn_box_get_preferred_length (GtkWidget *widget,
 
           gtk_widget_get_preferred_size (GTK_WIDGET (button), NULL, &child_req);
 
-          /* for each first item in row */
-          if (index % nrows == 0)
-            x += size;
-          index += 1;
+          if (horizontal)
+            {
+              item_length = square_icons ? hx_size : MAX (hx_size, child_req.width);
+              column_length = MAX (column_length, item_length);
+              single_horizontal = FALSE;
+            }
+          else
+            {
+              item_length = MAX (MIN (panel_size, child_req.width), hy_size);
+              column_length = hx_size;
+              single_horizontal = !square_icons && child_req.width > child_req.height;
+            }
+
+          if (single_horizontal)
+            {
+              if (row > 0)
+                total_length += hx_size;
+              row = -1; /* will become 0 later and take the full length */
+            }
+
+          if (allocate)
+            {
+              if (horizontal)
+                {
+                  child_alloc.x = x0 + total_length;
+                  child_alloc.y = y0 + row * hy_size;
+                  child_alloc.width = item_length;
+                  child_alloc.height = hy_size;
+                }
+              else
+                {
+                  child_alloc.x = x0 + (single_horizontal ? 0 : row * hy_size);
+                  child_alloc.y = y0 + total_length;
+                  child_alloc.width = item_length;
+                  child_alloc.height = hx_size;
+                }
+
+              gtk_widget_size_allocate (GTK_WIDGET (button), &child_alloc);
+            }
+
+          row = (row + 1) % nrows;
+
+          if (row == 0)
+            {
+              total_length += column_length;
+              column_length = 0;
+            }
         }
     }
 
+  total_length += column_length;
+
   if (minimum_length != NULL)
-    *minimum_length = x;
+    *minimum_length = total_length;
 
   if (natural_length != NULL)
-    *natural_length = x;
+    *natural_length = total_length;
 }
 
 
@@ -386,7 +435,8 @@ sn_box_get_preferred_width (GtkWidget *widget,
 
   if (sn_config_get_panel_orientation (box->config) == GTK_ORIENTATION_HORIZONTAL)
     {
-      sn_box_get_preferred_length (widget, minimum_width, natural_width);
+      sn_box_measure_and_allocate (widget, minimum_width, natural_width,
+                                   FALSE, 0, 0, TRUE);
     }
   else
     {
@@ -410,7 +460,8 @@ sn_box_get_preferred_height (GtkWidget *widget,
 
   if (sn_config_get_panel_orientation (box->config) == GTK_ORIENTATION_VERTICAL)
     {
-      sn_box_get_preferred_length (widget, minimum_height, natural_height);
+      sn_box_measure_and_allocate (widget, minimum_height, natural_height,
+                                   FALSE, 0, 0, FALSE);
     }
   else
     {
@@ -428,83 +479,14 @@ static void
 sn_box_size_allocate (GtkWidget     *widget,
                       GtkAllocation *allocation)
 {
-  SnBox           *box = XFCE_SN_BOX (widget);
-  SnButton        *button;
-  GtkAllocation    child_alloc;
-  gint             panel_size, icon_size, xsize, ysize, nrows;
-  gboolean         single_row, square_icons;
-  gint             x, y, row;
-  GList           *known_items, *li, *li_int, *li_tmp;
-  GtkOrientation   panel_orientation;
-
-  row = 0;
-  x = 0;
-  y = 0;
+  SnBox *box = XFCE_SN_BOX (widget);
 
   gtk_widget_set_allocation (widget, allocation);
 
-  panel_size = sn_config_get_panel_size (box->config);
-  icon_size = sn_config_get_icon_size (box->config);
-  single_row = sn_config_get_single_row (box->config);
-  square_icons = sn_config_get_square_icons (box->config);
-  icon_size += 2; /* additional padding */
-  if (square_icons)
-    {
-      nrows = MAX (1, sn_config_get_nrows (box->config));
-      xsize = ysize = panel_size / (single_row ? 1 : nrows);
-    }
-  else
-    {
-      xsize = MIN (icon_size, panel_size);
-      nrows = single_row ? 1 : MAX (1, panel_size / xsize);
-      ysize = panel_size / nrows;
-    }
-
-  panel_orientation = sn_config_get_panel_orientation (box->config);
-
-  known_items = sn_config_get_known_items (box->config);
-  for (li = known_items; li != NULL; li = li->next)
-    {
-      li_int = g_hash_table_lookup (box->children, li->data);
-      for (li_tmp = li_int; li_tmp != NULL; li_tmp = li_tmp->next)
-        {
-          button = li_int->data;
-          if (sn_config_is_hidden (box->config,
-                                   sn_button_get_name (button)))
-            {
-              continue;
-            }
-
-          if (nrows == 1)
-            y = (panel_size - ysize + 1) / 2;
-          else
-            y = (2 * row * (panel_size - ysize) + nrows - 1) / (2 * nrows - 2);
-
-          if (panel_orientation == GTK_ORIENTATION_HORIZONTAL)
-            {
-              child_alloc.x = allocation->x + x;
-              child_alloc.y = allocation->y + y;
-              child_alloc.width = xsize;
-              child_alloc.height = ysize;
-            }
-          else
-            {
-              child_alloc.x = allocation->x + y;
-              child_alloc.y = allocation->y + x;
-              child_alloc.width = ysize;
-              child_alloc.height = xsize;
-            }
-
-          gtk_widget_size_allocate (GTK_WIDGET (button), &child_alloc);
-
-          row += 1;
-          if (row >= nrows)
-            {
-              x += xsize;
-              row = 0;
-            }
-        }
-    }
+  sn_box_measure_and_allocate (widget, NULL, NULL,
+                               TRUE, allocation->x, allocation->y,
+                               sn_config_get_panel_orientation (box->config) ==
+                               GTK_ORIENTATION_HORIZONTAL);
 }
 
 
