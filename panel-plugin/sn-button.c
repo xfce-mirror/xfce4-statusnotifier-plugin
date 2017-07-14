@@ -64,6 +64,8 @@ struct _SnButton
   GtkButton            __parent__;
 
   SnItem              *item;
+  SnConfig            *config;
+
   GtkMenuPositionFunc  pos_func;
   gpointer             pos_func_data;
 
@@ -120,6 +122,8 @@ sn_button_init (SnButton *button)
   gtk_widget_add_events (GTK_WIDGET (button), GDK_SCROLL_MASK | GDK_SMOOTH_SCROLL_MASK);
 
   button->item = NULL;
+  button->config = NULL;
+
   button->pos_func = NULL;
   button->pos_func_data = NULL;
 
@@ -171,6 +175,8 @@ sn_button_new (SnItem              *item,
   g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), NULL);
 
   button->item = item;
+  button->config = config;
+
   button->pos_func = pos_func;
   button->pos_func_data = pos_func_data;
 
@@ -235,14 +241,17 @@ sn_button_button_press (GtkWidget      *widget,
                         GdkEventButton *event)
 {
   SnButton *button = XFCE_SN_BUTTON (widget);
+  gboolean  menu_is_primary;
 
-  if (event->button == 3 && button->menu_only)
+  menu_is_primary = sn_config_get_menu_is_primary (button->config);
+
+  if (event->button == 3 && (button->menu_only || menu_is_primary))
     {
       /* menu is available by left click, so show the panel menu instead */
       return FALSE;
     }
 
-  if ((event->button == 1 && button->menu_only) || event->button == 3)
+  if ((event->button == 1 && (button->menu_only || menu_is_primary)) || event->button == 3)
     {
       if (button->menu != NULL)
         {
@@ -283,16 +292,22 @@ sn_button_button_release (GtkWidget      *widget,
                           GdkEventButton *event)
 {
   SnButton *button = XFCE_SN_BUTTON (widget);
+  gboolean  menu_is_primary;
+
+  menu_is_primary = sn_config_get_menu_is_primary (button->config);
 
   if (event->button == 1)
     {
       /* menu could be handled in button-press-event, check this */
-      if (button->menu == NULL || !button->menu_only)
+      if (button->menu == NULL || !(button->menu_only || menu_is_primary))
         sn_item_activate (button->item, (gint) event->x_root, (gint) event->y_root);
     }
   else if (event->button == 2)
     {
-      sn_item_secondary_activate (button->item, (gint) event->x_root, (gint) event->y_root);
+      if (menu_is_primary && !button->menu_only)
+        sn_item_activate (button->item, (gint) event->x_root, (gint) event->y_root);
+      else
+        sn_item_secondary_activate (button->item, (gint) event->x_root, (gint) event->y_root);
     }
 
   /* process animations */

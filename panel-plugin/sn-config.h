@@ -58,6 +58,8 @@ gboolean               sn_config_get_single_row                (SnConfig        
 
 gboolean               sn_config_get_square_icons              (SnConfig                *config);
 
+gboolean               sn_config_get_menu_is_primary           (SnConfig                *config);
+
 gint                   sn_config_get_icon_size                 (SnConfig                *config);
 
 gboolean               sn_config_is_hidden                     (SnConfig                *config,

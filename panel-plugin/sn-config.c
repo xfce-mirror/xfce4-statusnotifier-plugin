@@ -42,6 +42,7 @@
 #define DEFAULT_ICON_SIZE          22
 #define DEFAULT_SINGLE_ROW         FALSE
 #define DEFAULT_SQUARE_ICONS       FALSE
+#define DEFAULT_MENU_IS_PRIMARY    FALSE
 #define DEFAULT_ORIENTATION        GTK_ORIENTATION_HORIZONTAL
 #define DEFAULT_PANEL_ORIENTATION  GTK_ORIENTATION_HORIZONTAL
 #define DEFAULT_PANEL_SIZE         28
@@ -75,6 +76,7 @@ struct _SnConfig
   gint                icon_size;
   gboolean            single_row;
   gboolean            square_icons;
+  gboolean            menu_is_primary;
   gboolean            mode_whitelist;
   GList              *known_items;
   GHashTable         *hidden_items;
@@ -96,6 +98,7 @@ enum
   PROP_ICON_SIZE,
   PROP_SINGLE_ROW,
   PROP_SQUARE_ICONS,
+  PROP_MENU_IS_PRIMARY,
   PROP_MODE_WHITELIST,
   PROP_KNOWN_ITEMS,
   PROP_HIDDEN_ITEMS
@@ -167,6 +170,13 @@ sn_config_class_init (SnConfigClass *klass)
                                    PROP_SQUARE_ICONS,
                                    g_param_spec_boolean ("square-icons", NULL, NULL,
                                                          DEFAULT_SQUARE_ICONS,
+                                                         G_PARAM_READWRITE |
+                                                         G_PARAM_STATIC_STRINGS));
+
+  g_object_class_install_property (object_class,
+                                   PROP_MENU_IS_PRIMARY,
+                                   g_param_spec_boolean ("menu-is-primary", NULL, NULL,
+                                                         DEFAULT_MENU_IS_PRIMARY,
                                                          G_PARAM_READWRITE |
                                                          G_PARAM_STATIC_STRINGS));
 
@@ -304,6 +314,10 @@ sn_config_get_property (GObject    *object,
       g_value_set_boolean (value, config->square_icons);
       break;
 
+    case PROP_MENU_IS_PRIMARY:
+      g_value_set_boolean (value, config->menu_is_primary);
+      break;
+
     case PROP_MODE_WHITELIST:
       g_value_set_boolean (value, config->mode_whitelist);
       break;
@@ -374,6 +388,15 @@ sn_config_set_property (GObject      *object,
       if (config->square_icons != val)
         {
           config->square_icons = val;
+          g_signal_emit (G_OBJECT (config), sn_config_signals[CONFIGURATION_CHANGED], 0);
+        }
+      break;
+
+    case PROP_MENU_IS_PRIMARY:
+      val = g_value_get_boolean (value);
+      if (config->menu_is_primary != val)
+        {
+          config->menu_is_primary = val;
           g_signal_emit (G_OBJECT (config), sn_config_signals[CONFIGURATION_CHANGED], 0);
         }
       break;
@@ -454,6 +477,16 @@ sn_config_get_square_icons (SnConfig *config)
   g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), DEFAULT_SQUARE_ICONS);
 
   return config->square_icons;
+}
+
+
+
+gboolean
+sn_config_get_menu_is_primary (SnConfig *config)
+{
+  g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), DEFAULT_MENU_IS_PRIMARY);
+
+  return config->menu_is_primary;
 }
 
 
@@ -744,6 +777,10 @@ sn_config_new (const gchar *property_base)
 
       property = g_strconcat (property_base, "/square-icons", NULL);
       xfconf_g_property_bind (channel, property, G_TYPE_BOOLEAN, config, "square-icons");
+      g_free (property);
+
+      property = g_strconcat (property_base, "/menu-is-primary", NULL);
+      xfconf_g_property_bind (channel, property, G_TYPE_BOOLEAN, config, "menu-is-primary");
       g_free (property);
 
       property = g_strconcat (property_base, "/mode-whitelist", NULL);

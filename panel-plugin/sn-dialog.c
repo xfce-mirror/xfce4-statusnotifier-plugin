@@ -433,6 +433,12 @@ sn_dialog_build (SnDialog *dialog)
                               G_OBJECT (object), "active",
                               G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
 
+      object = gtk_builder_get_object (dialog->builder, "checkbutton-menu-is-primary");
+      g_return_val_if_fail (GTK_IS_WIDGET (object), FALSE);
+      g_object_bind_property (G_OBJECT (dialog->config), "menu-is-primary",
+                              G_OBJECT (object), "active",
+                              G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+
       object = gtk_builder_get_object (dialog->builder, "checkbutton-whitelist");
       g_return_val_if_fail (GTK_IS_WIDGET (object), FALSE);
       g_object_bind_property (G_OBJECT (dialog->config), "mode-whitelist",
