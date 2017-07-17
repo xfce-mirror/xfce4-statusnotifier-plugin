@@ -168,8 +168,7 @@ sn_button_new (SnItem              *item,
                gpointer             pos_func_data,
                SnConfig            *config)
 {
-  SnButton  *button = g_object_new (XFCE_TYPE_SN_BUTTON, NULL);
-  GtkWidget *image, *menu;
+  SnButton *button = g_object_new (XFCE_TYPE_SN_BUTTON, NULL);
 
   g_return_val_if_fail (XFCE_IS_SN_ITEM (item), NULL);
   g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), NULL);

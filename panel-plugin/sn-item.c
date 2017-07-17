@@ -597,9 +597,9 @@ sn_item_pixbuf_equals (GdkPixbuf *p1,
 {
   guchar *p1p, *p2p;
   guint   p1l, p2l;
-  gint    i;
+  guint   i;
 
-  if (p1 == p2 || p1 == NULL && p2 == NULL)
+  if (p1 == p2 || (p1 == NULL && p2 == NULL))
     return TRUE;
 
   if ((p1 == NULL) != (p2 == NULL))
@@ -611,7 +611,7 @@ sn_item_pixbuf_equals (GdkPixbuf *p1,
   if (p1l != p2l)
     return FALSE;
 
-  for (gint i = 0; i < p1l; i++)
+  for (i = 0; i < p1l; i++)
     if (p1p[i] != p2p[i])
       return FALSE;
 
@@ -648,7 +648,7 @@ sn_item_extract_pixbuf (GVariant *variant)
         {
           size = g_variant_get_size (array_value);
           /* sanity check */
-          if (size == 4 * width * height)
+          if (size == (gsize)(4 * width * height))
             {
               /* find the largest image */
               data = g_variant_get_data (array_value);

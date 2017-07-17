@@ -713,7 +713,7 @@ gboolean
 sn_config_items_clear (SnConfig *config)
 {
   GHashTable *collected_known_items;
-  gint        initial_size;
+  guint       initial_size;
   GList      *new_list, *li;
 
   collected_known_items = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);

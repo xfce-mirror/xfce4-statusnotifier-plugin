@@ -228,8 +228,7 @@ sn_plugin_item_removed (SnPlugin *plugin,
 static void
 sn_plugin_construct (XfcePanelPlugin *panel_plugin)
 {
-  SnPlugin  *plugin = XFCE_SN_PLUGIN (panel_plugin);
-  GtkWidget *label;
+  SnPlugin *plugin = XFCE_SN_PLUGIN (panel_plugin);
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
