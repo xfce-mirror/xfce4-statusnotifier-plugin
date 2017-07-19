@@ -270,14 +270,14 @@ sn_icon_box_apply_icon (GtkWidget    *image,
         {
           work_pixbuf = gtk_icon_theme_load_icon (icon_theme_from_path,
                                                   sn_preferred_name (),
-                                                  -1, 0, NULL);
+                                                  icon_size, 0, NULL);
         }
 
       if (work_pixbuf == NULL)
         {
           icon_info = gtk_icon_theme_lookup_icon (icon_theme,
                                                   sn_preferred_name (),
-                                                  16, 0);
+                                                  icon_size, 0);
           if (icon_info != NULL)
             {
               gtk_image_set_from_icon_name (GTK_IMAGE (image),
