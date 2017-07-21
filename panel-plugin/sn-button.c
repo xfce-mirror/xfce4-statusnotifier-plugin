@@ -244,6 +244,12 @@ sn_button_button_press (GtkWidget      *widget,
 
   menu_is_primary = sn_config_get_menu_is_primary (button->config);
 
+  if (event->button == 3 && (event->state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK)
+    {
+      /* ctrl + right click is used to show plugin's menu */
+      return FALSE;
+    }
+
   if (event->button == 3 && (button->menu_only || menu_is_primary))
     {
       /* menu is available by left click, so show the panel menu instead */
