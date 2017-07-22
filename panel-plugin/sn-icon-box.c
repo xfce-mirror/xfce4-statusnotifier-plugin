@@ -74,6 +74,7 @@ struct _SnIconBox
 
   guint                item_icon_changed_handler;
   guint                config_notify_icon_size_handler;
+  guint                config_notify_symbolic_icons_handler;
 };
 
 G_DEFINE_TYPE (SnIconBox, sn_icon_box, GTK_TYPE_CONTAINER)
@@ -120,6 +121,7 @@ sn_icon_box_init (SnIconBox *box)
 
   box->item_icon_changed_handler = 0;
   box->config_notify_icon_size_handler = 0;
+  box->config_notify_symbolic_icons_handler = 0;
 }
 
 
@@ -199,6 +201,9 @@ sn_icon_box_new (SnItem   *item,
   box->config_notify_icon_size_handler =
     g_signal_connect_swapped (config, "notify::icon-size",
                               G_CALLBACK (sn_icon_box_icon_changed), box);
+  box->config_notify_symbolic_icons_handler =
+    g_signal_connect_swapped (config, "notify::symbolic-icons",
+                              G_CALLBACK (sn_icon_box_icon_changed), box);
   box->item_icon_changed_handler =
     g_signal_connect_swapped (item, "icon-changed",
                               G_CALLBACK (sn_icon_box_icon_changed), box);
@@ -218,6 +223,8 @@ sn_icon_box_finalize (GObject *object)
     g_signal_handler_disconnect (box->item, box->item_icon_changed_handler);
   if (box->config_notify_icon_size_handler != 0)
     g_signal_handler_disconnect (box->config, box->config_notify_icon_size_handler);
+  if (box->config_notify_symbolic_icons_handler != 0)
+    g_signal_handler_disconnect (box->config, box->config_notify_symbolic_icons_handler);
 
   G_OBJECT_CLASS (sn_icon_box_parent_class)->finalize (object);
 }
@@ -230,12 +237,16 @@ sn_icon_box_apply_icon (GtkWidget    *image,
                         GtkIconTheme *icon_theme_from_path,
                         const gchar  *icon_name,
                         GdkPixbuf    *icon_pixbuf,
-                        gint          icon_size)
+                        gint          icon_size,
+                        gboolean      prefer_symbolic)
 {
-  GtkIconInfo *icon_info;
+  GtkIconInfo *icon_info = NULL;
   GdkPixbuf   *work_pixbuf = NULL;
-  gchar       *work_icon_name = FALSE;
+  gchar       *work_icon_name = NULL;
+  gchar       *symbolic_icon_name = NULL;
+  gint         symbolic_icon_size;
   gboolean     use_pixbuf = TRUE;
+  gboolean     use_symbolic = FALSE;
   gint         width, height;
   gchar       *s1, *s2;
   gint         max_size = icon_size;
@@ -275,13 +286,54 @@ sn_icon_box_apply_icon (GtkWidget    *image,
 
       if (work_pixbuf == NULL)
         {
-          icon_info = gtk_icon_theme_lookup_icon (icon_theme,
-                                                  sn_preferred_name (),
-                                                  icon_size, 0);
+          if (prefer_symbolic && strstr (sn_preferred_name (), "-symbolic") == NULL)
+            {
+              symbolic_icon_name = g_strdup_printf ("%s-symbolic", sn_preferred_name ());
+
+              symbolic_icon_size = icon_size;
+              if (symbolic_icon_size <= 48)
+                {
+                  /* calculate highest bit (e.g. 22 -> 16, 63 -> 32) */
+                  symbolic_icon_size |= symbolic_icon_size >> 1;
+                  symbolic_icon_size |= symbolic_icon_size >> 2;
+                  symbolic_icon_size |= symbolic_icon_size >> 4;
+                  symbolic_icon_size |= symbolic_icon_size >> 8;
+                  symbolic_icon_size |= symbolic_icon_size >> 16;
+                  symbolic_icon_size = symbolic_icon_size - (symbolic_icon_size >> 1);
+                }
+
+              icon_info = gtk_icon_theme_lookup_icon (icon_theme,
+                                                      symbolic_icon_name,
+                                                      symbolic_icon_size,
+                                                      0);
+              if (icon_info != NULL)
+                {
+                  if (gtk_icon_info_is_symbolic (icon_info))
+                    {
+                      use_symbolic = TRUE;
+                      max_size = symbolic_icon_size;
+                    }
+                  else
+                    {
+                      g_object_unref (icon_info);
+                      icon_info = NULL;
+                    }
+                }
+            }
+
+          if (icon_info == NULL)
+            {
+              icon_info = gtk_icon_theme_lookup_icon (icon_theme,
+                                                      sn_preferred_name (),
+                                                      icon_size, 0);
+            }
+
           if (icon_info != NULL)
             {
               gtk_image_set_from_icon_name (GTK_IMAGE (image),
-                                            sn_preferred_name (),
+                                            use_symbolic
+                                            ? symbolic_icon_name
+                                            : sn_preferred_name (),
                                             GTK_ICON_SIZE_BUTTON);
               g_object_unref (icon_info);
               use_pixbuf = FALSE;
@@ -328,6 +380,9 @@ sn_icon_box_apply_icon (GtkWidget    *image,
   if (work_icon_name != NULL)
     g_free (work_icon_name);
 
+  if (symbolic_icon_name != NULL)
+    g_free (symbolic_icon_name);
+
   gtk_image_set_pixel_size (GTK_IMAGE (image), max_size);
 }
 
@@ -345,10 +400,12 @@ sn_icon_box_icon_changed (GtkWidget *widget)
   GtkIconTheme *icon_theme;
   GtkIconTheme *icon_theme_from_path = NULL;
   gint          icon_size;
+  gboolean      symbolic_icons;
 
   box = XFCE_SN_ICON_BOX (widget);
   icon_theme = gtk_icon_theme_get_for_screen (gtk_widget_get_screen (GTK_WIDGET (widget)));
   icon_size = sn_config_get_icon_size (box->config);
+  symbolic_icons = sn_config_get_symbolic_icons (box->config);
 
   sn_item_get_icon (box->item, &theme_path,
                     &icon_name, &icon_pixbuf,
@@ -361,9 +418,9 @@ sn_icon_box_icon_changed (GtkWidget *widget)
     }
 
   sn_icon_box_apply_icon (box->icon, icon_theme, icon_theme_from_path,
-                          icon_name, icon_pixbuf, icon_size);
+                          icon_name, icon_pixbuf, icon_size, symbolic_icons);
   sn_icon_box_apply_icon (box->overlay, icon_theme, icon_theme_from_path,
-                          overlay_icon_name, overlay_icon_pixbuf, icon_size);
+                          overlay_icon_name, overlay_icon_pixbuf, icon_size, symbolic_icons);
 
   if (icon_theme_from_path != NULL)
     g_object_unref (icon_theme_from_path);

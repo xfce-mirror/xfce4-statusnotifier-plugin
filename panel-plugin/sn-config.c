@@ -42,6 +42,7 @@
 #define DEFAULT_ICON_SIZE          22
 #define DEFAULT_SINGLE_ROW         FALSE
 #define DEFAULT_SQUARE_ICONS       FALSE
+#define DEFAULT_SYMBOLIC_ICONS     FALSE
 #define DEFAULT_MENU_IS_PRIMARY    FALSE
 #define DEFAULT_ORIENTATION        GTK_ORIENTATION_HORIZONTAL
 #define DEFAULT_PANEL_ORIENTATION  GTK_ORIENTATION_HORIZONTAL
@@ -76,6 +77,7 @@ struct _SnConfig
   gint                icon_size;
   gboolean            single_row;
   gboolean            square_icons;
+  gboolean            symbolic_icons;
   gboolean            menu_is_primary;
   gboolean            mode_whitelist;
   GList              *known_items;
@@ -98,6 +100,7 @@ enum
   PROP_ICON_SIZE,
   PROP_SINGLE_ROW,
   PROP_SQUARE_ICONS,
+  PROP_SYMBOLIC_ICONS,
   PROP_MENU_IS_PRIMARY,
   PROP_MODE_WHITELIST,
   PROP_KNOWN_ITEMS,
@@ -174,6 +177,13 @@ sn_config_class_init (SnConfigClass *klass)
                                                          G_PARAM_STATIC_STRINGS));
 
   g_object_class_install_property (object_class,
+                                   PROP_SYMBOLIC_ICONS,
+                                   g_param_spec_boolean ("symbolic-icons", NULL, NULL,
+                                                         DEFAULT_SYMBOLIC_ICONS,
+                                                         G_PARAM_READWRITE |
+                                                         G_PARAM_STATIC_STRINGS));
+
+  g_object_class_install_property (object_class,
                                    PROP_MENU_IS_PRIMARY,
                                    g_param_spec_boolean ("menu-is-primary", NULL, NULL,
                                                          DEFAULT_MENU_IS_PRIMARY,
@@ -236,6 +246,7 @@ sn_config_init (SnConfig *config)
   config->icon_size            = DEFAULT_ICON_SIZE;
   config->single_row           = DEFAULT_SINGLE_ROW;
   config->square_icons         = DEFAULT_SQUARE_ICONS;
+  config->symbolic_icons       = DEFAULT_SYMBOLIC_ICONS;
   config->mode_whitelist       = DEFAULT_MODE_WHITELIST;
   config->known_items          = NULL;
   config->hidden_items         = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
@@ -314,6 +325,10 @@ sn_config_get_property (GObject    *object,
       g_value_set_boolean (value, config->square_icons);
       break;
 
+    case PROP_SYMBOLIC_ICONS:
+      g_value_set_boolean (value, config->symbolic_icons);
+      break;
+
     case PROP_MENU_IS_PRIMARY:
       g_value_set_boolean (value, config->menu_is_primary);
       break;
@@ -388,6 +403,15 @@ sn_config_set_property (GObject      *object,
       if (config->square_icons != val)
         {
           config->square_icons = val;
+          g_signal_emit (G_OBJECT (config), sn_config_signals[CONFIGURATION_CHANGED], 0);
+        }
+      break;
+
+    case PROP_SYMBOLIC_ICONS:
+      val = g_value_get_boolean (value);
+      if (config->symbolic_icons != val)
+        {
+          config->symbolic_icons = val;
           g_signal_emit (G_OBJECT (config), sn_config_signals[CONFIGURATION_CHANGED], 0);
         }
       break;
@@ -477,6 +501,16 @@ sn_config_get_square_icons (SnConfig *config)
   g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), DEFAULT_SQUARE_ICONS);
 
   return config->square_icons;
+}
+
+
+
+gboolean
+sn_config_get_symbolic_icons (SnConfig *config)
+{
+  g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), DEFAULT_SYMBOLIC_ICONS);
+
+  return config->symbolic_icons;
 }
 
 
@@ -777,6 +811,10 @@ sn_config_new (const gchar *property_base)
 
       property = g_strconcat (property_base, "/square-icons", NULL);
       xfconf_g_property_bind (channel, property, G_TYPE_BOOLEAN, config, "square-icons");
+      g_free (property);
+
+      property = g_strconcat (property_base, "/symbolic-icons", NULL);
+      xfconf_g_property_bind (channel, property, G_TYPE_BOOLEAN, config, "symbolic-icons");
       g_free (property);
 
       property = g_strconcat (property_base, "/menu-is-primary", NULL);
