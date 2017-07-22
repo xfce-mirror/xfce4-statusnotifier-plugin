@@ -75,7 +75,6 @@ struct _SnItem
 
   gchar               *bus_name;
   gchar               *object_path;
-  gchar               *service;
   gchar               *key;
 
   gchar               *id;
@@ -107,7 +106,6 @@ enum
   PROP_0,
   PROP_BUS_NAME,
   PROP_OBJECT_PATH,
-  PROP_SERVICE,
   PROP_KEY,
   PROP_EXPOSED
 };
@@ -176,12 +174,6 @@ sn_item_class_init (SnItemClass *klass)
                                    PROP_OBJECT_PATH,
                                    g_param_spec_string ("object-path", NULL, NULL, NULL,
                                                         G_PARAM_WRITABLE |
-                                                        G_PARAM_STATIC_STRINGS));
-
-  g_object_class_install_property (object_class,
-                                   PROP_SERVICE,
-                                   g_param_spec_string ("service", NULL, NULL, NULL,
-                                                        G_PARAM_READWRITE |
                                                         G_PARAM_STATIC_STRINGS));
 
   g_object_class_install_property (object_class,
@@ -260,7 +252,6 @@ sn_item_init (SnItem *item)
 
   item->bus_name = NULL;
   item->object_path = NULL;
-  item->service = NULL;
   item->key = NULL;
 
   item->id = NULL;
@@ -302,7 +293,6 @@ sn_item_finalize (GObject *object)
 
   g_free (item->bus_name);
   g_free (item->object_path);
-  g_free (item->service);
   g_free (item->key);
 
   g_free (item->id);
@@ -343,10 +333,6 @@ sn_item_get_property (GObject    *object,
 
   switch (prop_id)
     {
-    case PROP_SERVICE:
-      g_value_set_string (value, item->service);
-      break;
-
     case PROP_KEY:
       g_value_set_string (value, item->key);
       break;
@@ -381,11 +367,6 @@ sn_item_set_property (GObject      *object,
     case PROP_OBJECT_PATH:
       g_free (item->object_path);
       item->object_path = g_value_dup_string (value);
-      break;
-
-    case PROP_SERVICE:
-      g_free (item->service);
-      item->service = g_value_dup_string (value);
       break;
 
     case PROP_KEY:

@@ -5,6 +5,6 @@ _Name=Status Notifier Plugin
 _Comment=Provides a panel area for status notifier items (application indicators)
 Icon=xfce4-statusnotifier-plugin
 X-XFCE-Module=statusnotifier
-X-XFCE-Unique=TRUE
+X-XFCE-Unique=FALSE
 X-XFCE-Internal=FALSE
 X-XFCE-API=2.0
