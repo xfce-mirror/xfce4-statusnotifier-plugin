@@ -28,6 +28,7 @@
 
 #include "sn-button.h"
 #include "sn-icon-box.h"
+#include "sn-util.h"
 
 
 
@@ -74,8 +75,6 @@ struct _SnButton
 
   GtkWidget           *box;
 
-  guint                item_tooltip_changed_handler;
-  guint                item_menu_changed_handler;
   guint                menu_deactivate_handler;
 };
 
@@ -132,8 +131,6 @@ sn_button_init (SnButton *button)
 
   button->box = NULL;
 
-  button->item_tooltip_changed_handler = 0;
-  button->item_menu_changed_handler = 0;
   button->menu_deactivate_handler = 0;
 
   gtk_widget_set_halign (GTK_WIDGET (button), GTK_ALIGN_FILL);
@@ -186,12 +183,10 @@ sn_button_new (SnItem              *item,
   g_object_set (G_OBJECT (button), "has-tooltip", TRUE, NULL);
   g_signal_connect (button, "query-tooltip",
                     G_CALLBACK (sn_button_query_tooltip), NULL);
-  button->item_tooltip_changed_handler = 
-    g_signal_connect_swapped (item, "tooltip-changed",
-                              G_CALLBACK (gtk_widget_trigger_tooltip_query), button);
-  button->item_menu_changed_handler = 
-    g_signal_connect_swapped (item, "menu-changed",
-                              G_CALLBACK (sn_button_menu_changed), button);
+  sn_signal_connect_weak_swapped (item, "tooltip-changed",
+                                  G_CALLBACK (gtk_widget_trigger_tooltip_query), button);
+  sn_signal_connect_weak_swapped (item, "menu-changed",
+                                  G_CALLBACK (sn_button_menu_changed), button);
   sn_button_menu_changed (GTK_WIDGET (button), item);
 
   return GTK_WIDGET (button);
@@ -203,12 +198,6 @@ static void
 sn_button_finalize (GObject *object)
 {
   SnButton *button = XFCE_SN_BUTTON (object);
-
-  if (button->item_tooltip_changed_handler != 0)
-    g_signal_handler_disconnect (button->item, button->item_tooltip_changed_handler);
-
-  if (button->item_menu_changed_handler != 0)
-    g_signal_handler_disconnect (button->item, button->item_menu_changed_handler);
 
   if (button->menu_deactivate_handler != 0)
     g_signal_handler_disconnect (button->menu, button->menu_deactivate_handler);

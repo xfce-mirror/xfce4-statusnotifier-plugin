@@ -30,6 +30,7 @@
 
 #include "sn-box.h"
 #include "sn-button.h"
+#include "sn-util.h"
 
 
 
@@ -80,9 +81,6 @@ struct _SnBox
 
   /* in theory it's possible to have multiple items with same name */
   GHashTable          *children;
-
-  gulong               config_collect_known_items_handler;
-  gulong               config_items_list_changed_handler;
 };
 
 G_DEFINE_TYPE (SnBox, sn_box, GTK_TYPE_CONTAINER)
@@ -130,18 +128,6 @@ sn_box_finalize (GObject *object)
 {
   SnBox *box = XFCE_SN_BOX (object);
 
-  if (box->config_collect_known_items_handler != 0)
-    {
-      g_signal_handler_disconnect (box->config, box->config_collect_known_items_handler);
-      box->config_collect_known_items_handler = 0;
-    }
-
-  if (box->config_items_list_changed_handler != 0)
-    {
-      g_signal_handler_disconnect (box->config, box->config_items_list_changed_handler);
-      box->config_items_list_changed_handler = 0;
-    }
-
   g_hash_table_destroy (box->children);
 
   G_OBJECT_CLASS (sn_box_parent_class)->finalize (object);
@@ -156,12 +142,10 @@ sn_box_new (SnConfig *config)
 
   box->config = config;
 
-  box->config_collect_known_items_handler =
-    g_signal_connect_swapped (G_OBJECT (box->config), "collect-known-items",
-                              G_CALLBACK (sn_box_collect_known_items), box);
-  box->config_items_list_changed_handler =
-    g_signal_connect_swapped (G_OBJECT (box->config), "items-list-changed",
-                              G_CALLBACK (sn_box_list_changed), box);
+  sn_signal_connect_weak_swapped (G_OBJECT (box->config), "collect-known-items",
+                                  G_CALLBACK (sn_box_collect_known_items), box);
+  sn_signal_connect_weak_swapped (G_OBJECT (box->config), "items-list-changed",
+                                  G_CALLBACK (sn_box_list_changed), box);
 
   return GTK_WIDGET (box);
 }

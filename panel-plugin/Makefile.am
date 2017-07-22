@@ -32,7 +32,9 @@ libstatusnotifier_la_SOURCES = \
 	sn-item.c \
 	sn-item.h \
 	sn-plugin.c \
-	sn-plugin.h
+	sn-plugin.h \
+	sn-util.c \
+	sn-util.h
 
 libstatusnotifier_la_CFLAGS = \
 	$(GTK_CFLAGS) \

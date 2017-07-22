@@ -28,10 +28,9 @@
 #include <libxfce4panel/libxfce4panel.h>
 
 #include "sn-icon-box.h"
+#include "sn-util.h"
 
 
-
-static void                  sn_icon_box_finalize                    (GObject                 *object);
 
 static void                  sn_icon_box_icon_changed                (GtkWidget               *widget);
 
@@ -71,10 +70,6 @@ struct _SnIconBox
 
   GtkWidget           *icon;
   GtkWidget           *overlay;
-
-  guint                item_icon_changed_handler;
-  guint                config_notify_icon_size_handler;
-  guint                config_notify_symbolic_icons_handler;
 };
 
 G_DEFINE_TYPE (SnIconBox, sn_icon_box, GTK_TYPE_CONTAINER)
@@ -84,12 +79,8 @@ G_DEFINE_TYPE (SnIconBox, sn_icon_box, GTK_TYPE_CONTAINER)
 static void
 sn_icon_box_class_init (SnIconBoxClass *klass)
 {
-  GObjectClass      *object_class;
   GtkWidgetClass    *widget_class;
   GtkContainerClass *container_class;
-
-  object_class = G_OBJECT_CLASS (klass);
-  object_class->finalize = sn_icon_box_finalize;
 
   widget_class = GTK_WIDGET_CLASS (klass);
   widget_class->get_preferred_width = sn_icon_box_get_preferred_width;
@@ -118,10 +109,6 @@ sn_icon_box_init (SnIconBox *box)
 
   box->icon = NULL;
   box->overlay = NULL;
-
-  box->item_icon_changed_handler = 0;
-  box->config_notify_icon_size_handler = 0;
-  box->config_notify_symbolic_icons_handler = 0;
 }
 
 
@@ -198,35 +185,15 @@ sn_icon_box_new (SnItem   *item,
   gtk_widget_set_parent (box->overlay, GTK_WIDGET (box));
   gtk_widget_show (box->overlay);
 
-  box->config_notify_icon_size_handler =
-    g_signal_connect_swapped (config, "notify::icon-size",
-                              G_CALLBACK (sn_icon_box_icon_changed), box);
-  box->config_notify_symbolic_icons_handler =
-    g_signal_connect_swapped (config, "notify::symbolic-icons",
-                              G_CALLBACK (sn_icon_box_icon_changed), box);
-  box->item_icon_changed_handler =
-    g_signal_connect_swapped (item, "icon-changed",
-                              G_CALLBACK (sn_icon_box_icon_changed), box);
+  sn_signal_connect_weak_swapped (config, "notify::icon-size",
+                                  G_CALLBACK (sn_icon_box_icon_changed), box);
+  sn_signal_connect_weak_swapped (config, "notify::symbolic-icons",
+                                  G_CALLBACK (sn_icon_box_icon_changed), box);
+  sn_signal_connect_weak_swapped (item, "icon-changed",
+                                  G_CALLBACK (sn_icon_box_icon_changed), box);
   sn_icon_box_icon_changed (GTK_WIDGET (box));
 
   return GTK_WIDGET (box);
-}
-
-
-
-static void
-sn_icon_box_finalize (GObject *object)
-{
-  SnIconBox *box = XFCE_SN_ICON_BOX (object);
-
-  if (box->item_icon_changed_handler != 0)
-    g_signal_handler_disconnect (box->item, box->item_icon_changed_handler);
-  if (box->config_notify_icon_size_handler != 0)
-    g_signal_handler_disconnect (box->config, box->config_notify_icon_size_handler);
-  if (box->config_notify_symbolic_icons_handler != 0)
-    g_signal_handler_disconnect (box->config, box->config_notify_symbolic_icons_handler);
-
-  G_OBJECT_CLASS (sn_icon_box_parent_class)->finalize (object);
 }
 
 
