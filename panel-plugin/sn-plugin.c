@@ -107,12 +107,7 @@ sn_plugin_free (XfcePanelPlugin *panel_plugin)
   GList    *children, *li;
 
   /* remove children so they won't use unrefed SnItems and SnConfig */
-  children = gtk_container_get_children (GTK_CONTAINER (plugin->box));
-  for (li = children; li != NULL; li = li->next)
-    {
-      gtk_container_remove (GTK_CONTAINER (plugin->box), li->data);
-    }
-  g_list_free (children);
+  gtk_container_remove (GTK_CONTAINER (panel_plugin), plugin->box);
 
   g_object_unref (plugin->backend);
   g_object_unref (plugin->config);
