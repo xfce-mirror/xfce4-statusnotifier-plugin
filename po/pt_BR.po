@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Andre Miranda <andre42m@gmail.com>, 2017\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/xfce/teams/16840/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../panel-plugin/sn-dialog.c:368
+msgid "Clear"
+msgstr "Limpar"
+
+#: ../panel-plugin/sn-dialog.c:369
+msgid "Are you sure you want to clear the list of known items?"
+msgstr "Você tem certeza que deseja limpar a lista de itens conhecidos?"
+
+#: ../panel-plugin/sn-dialog.glade.h:1
+msgid "Status Notifier Items"
+msgstr "Itens Notificadores de Status"
+
+#: ../panel-plugin/sn-dialog.glade.h:2
+msgid "_Maximum icon size (px):"
+msgstr "Tamanho _máximo do ícone (px):"
+
+#: ../panel-plugin/sn-dialog.glade.h:3
+msgid "Arrange items in a single row"
+msgstr "Organizar itens em uma única linha"
+
+#: ../panel-plugin/sn-dialog.glade.h:4
+msgid ""
+"If enabled, ensure that the items are laid out in a single row or column"
+msgstr ""
+"Se habilitado, garante que os itens sejam posicionados em uma única linha ou"
+" coluna"
+
+#: ../panel-plugin/sn-dialog.glade.h:5
+msgid "Square icons"
+msgstr "Ícones quadrados"
+
+#: ../panel-plugin/sn-dialog.glade.h:6
+msgid "Item buttons will take a square when it's possible"
+msgstr "Botões dos itens ocuparão um quadrado quando possível"
+
+#: ../panel-plugin/sn-dialog.glade.h:7
+msgid "Symbolic icons"
+msgstr "Ícones simbólicos"
+
+#: ../panel-plugin/sn-dialog.glade.h:8
+msgid "Load symbolic icons if available"
+msgstr "Carrega ícones simbólicos se disponível"
+
+#: ../panel-plugin/sn-dialog.glade.h:9
+msgid "Appearance"
+msgstr "Aparência"
+
+#: ../panel-plugin/sn-dialog.glade.h:10
+msgid "Menu is primary action"
+msgstr "Menu é a ação primária"
+
+#: ../panel-plugin/sn-dialog.glade.h:11
+msgid "Left click will always display the menu for item"
+msgstr "Clique com o botão esquerdo sempre mostrá o menu para um item"
+
+#: ../panel-plugin/sn-dialog.glade.h:12
+msgid "Behavior"
+msgstr "Comportamento"
+
+#: ../panel-plugin/sn-dialog.glade.h:13
+msgid "Hide items by default"
+msgstr "Ocultar itens por padrão"
+
+#: ../panel-plugin/sn-dialog.glade.h:14
+msgid "When enabled, all new items will be marked as \"Hidden\""
+msgstr "Se habilitado, todos os novos itens serão marcados como \"Oculto\""
+
+#: ../panel-plugin/sn-dialog.glade.h:15
+msgid "Item"
+msgstr "Item"
+
+#: ../panel-plugin/sn-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Oculto"
+
+#: ../panel-plugin/sn-dialog.glade.h:17
+msgid "Move the selected item one row up"
+msgstr "Mover o item selecionado uma linha para cima"
+
+#: ../panel-plugin/sn-dialog.glade.h:18
+msgid "Move the selected item one row down"
+msgstr "Mover o item selecionado uma linha para baixo"
+
+#: ../panel-plugin/sn-dialog.glade.h:19
+msgid "C_lear Known Items"
+msgstr "_Limpar itens conhecidos"
+
+#: ../panel-plugin/sn-dialog.glade.h:20
+msgid "Resets the list of items and their visibility settings"
+msgstr "Redefine a lista de itens e suas configurações de visibilidade"
+
+#: ../panel-plugin/sn-dialog.glade.h:21
+msgid "Known Items"
+msgstr "Itens conhecidos"
+
+#: ../panel-plugin/sn-plugin.c:185
+msgid ""
+"Provides a panel area for status notifier items (application indicators)."
+msgstr ""
+"Fornece uma área do painel para itens de notificação de status (indicadores "
+"de aplicações)."
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Plug-in Notificador de Status"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:2
+msgid ""
+"Provides a panel area for status notifier items (application indicators)"
+msgstr ""
+"Fornece uma área do painel para itens de notificação de status (indicadores "
+"de aplicações)"
