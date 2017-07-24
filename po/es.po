@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Pablo Roberto “Jristz” Lezaeta Reyes <prflr88@gmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/xfce/teams/16840/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../panel-plugin/sn-dialog.c:368
+msgid "Clear"
+msgstr "Borrar"
+
+#: ../panel-plugin/sn-dialog.c:369
+msgid "Are you sure you want to clear the list of known items?"
+msgstr "¿Está seguro de que desea borrar la lista de elementos conocidos?"
+
+#: ../panel-plugin/sn-dialog.glade.h:1
+msgid "Status Notifier Items"
+msgstr "Elementos de notificador de estado"
+
+#: ../panel-plugin/sn-dialog.glade.h:2
+msgid "_Maximum icon size (px):"
+msgstr "Tamaño _máximo de iconos (px):"
+
+#: ../panel-plugin/sn-dialog.glade.h:3
+msgid "Arrange items in a single row"
+msgstr "Organizar elementos en una sola fila"
+
+#: ../panel-plugin/sn-dialog.glade.h:4
+msgid ""
+"If enabled, ensure that the items are laid out in a single row or column"
+msgstr ""
+"Si está activado, asegúrese de que los elementos estén dispuestos en una "
+"sola fila o columna"
+
+#: ../panel-plugin/sn-dialog.glade.h:5
+msgid "Square icons"
+msgstr "Iconos cuadrados"
+
+#: ../panel-plugin/sn-dialog.glade.h:6
+msgid "Item buttons will take a square when it's possible"
+msgstr "Los botones de elementos serán cuadrados cuando sea posible"
+
+#: ../panel-plugin/sn-dialog.glade.h:7
+msgid "Symbolic icons"
+msgstr "Iconos simbólicos"
+
+#: ../panel-plugin/sn-dialog.glade.h:8
+msgid "Load symbolic icons if available"
+msgstr "Cargar iconos simbólicos si están disponibles"
+
+#: ../panel-plugin/sn-dialog.glade.h:9
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: ../panel-plugin/sn-dialog.glade.h:10
+msgid "Menu is primary action"
+msgstr "El menú es la acción principal"
+
+#: ../panel-plugin/sn-dialog.glade.h:11
+msgid "Left click will always display the menu for item"
+msgstr "El clic izquierdo mostrará siempre el menú del elemento"
+
+#: ../panel-plugin/sn-dialog.glade.h:12
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#: ../panel-plugin/sn-dialog.glade.h:13
+msgid "Hide items by default"
+msgstr "Ocultar elementos por omisión"
+
+#: ../panel-plugin/sn-dialog.glade.h:14
+msgid "When enabled, all new items will be marked as \"Hidden\""
+msgstr ""
+"Cuando está activada, todos los elementos nuevos se marcarán como «Ocultos»"
+
+#: ../panel-plugin/sn-dialog.glade.h:15
+msgid "Item"
+msgstr "Elemento"
+
+#: ../panel-plugin/sn-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Ocultar"
+
+#: ../panel-plugin/sn-dialog.glade.h:17
+msgid "Move the selected item one row up"
+msgstr "Mover el elemento seleccionado una fila hacia arriba"
+
+#: ../panel-plugin/sn-dialog.glade.h:18
+msgid "Move the selected item one row down"
+msgstr "Mover el elemento seleccionado una fila hacia abajo"
+
+#: ../panel-plugin/sn-dialog.glade.h:19
+msgid "C_lear Known Items"
+msgstr "Borrar elementos _conocidos"
+
+#: ../panel-plugin/sn-dialog.glade.h:20
+msgid "Resets the list of items and their visibility settings"
+msgstr "Restablece la lista de elementos y su configuración de visibilidad"
+
+#: ../panel-plugin/sn-dialog.glade.h:21
+msgid "Known Items"
+msgstr "Elementos conocidos"
+
+#: ../panel-plugin/sn-plugin.c:185
+msgid ""
+"Provides a panel area for status notifier items (application indicators)."
+msgstr ""
+"Proporciona un área del panel para los elementos de notificaciones de estado"
+" (indicadores de aplicación)."
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Complemento de notificador de estado"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:2
+msgid ""
+"Provides a panel area for status notifier items (application indicators)"
+msgstr ""
+"Proporciona un área del panel para los elementos de notificaciones de estado"
+" (indicadores de aplicación)"
