@@ -6,14 +6,14 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"POT-Creation-Date: 2017-07-26 12:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Igor <f2404@yandex.ru>, 2017\n"
+"Last-Translator: Viktor Odintsev <ninetls@xfce.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
@@ -32,18 +32,15 @@ msgstr "Элементы оповещений статуса"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "_Наибольший размер значка (пикс.):"
+msgstr "_Максимальный размер значков (пикс.):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
-msgstr "Выстраивать элементы в одну строку"
+msgstr "Выстраивать элементы в один ряд"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
-msgid ""
-"If enabled, ensure that the items are laid out in a single row or column"
-msgstr ""
-"Если включено, следить за тем, чтобы элементы располагались в один ряд или "
-"столбец."
+msgid "If enabled, ensure that the items are laid out in a single row"
+msgstr "Если включено, располагать элементы в один ряд"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -51,7 +48,7 @@ msgstr "Значки квадратом"
 
 #: ../panel-plugin/sn-dialog.glade.h:6
 msgid "Item buttons will take a square when it's possible"
-msgstr "Кнопки элементов образуют квадрат, если это возможно."
+msgstr "Кнопки элементов образуют квадрат, если это возможно"
 
 #: ../panel-plugin/sn-dialog.glade.h:7
 msgid "Symbolic icons"
@@ -75,7 +72,7 @@ msgstr "Щелчок левой кнопкой мышки всегда вызы�
 
 #: ../panel-plugin/sn-dialog.glade.h:12
 msgid "Behavior"
-msgstr "Поведение:"
+msgstr "Поведение"
 
 #: ../panel-plugin/sn-dialog.glade.h:13
 msgid "Hide items by default"
@@ -107,26 +104,20 @@ msgstr "О_чистить известные элементы"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
-msgstr "Сбрасывает список элементов и их настройки видимости."
+msgstr "Сбрасывает список элементов и их настройки видимости"
 
 #: ../panel-plugin/sn-dialog.glade.h:21
 msgid "Known Items"
 msgstr "Известные элементы"
 
 #: ../panel-plugin/sn-plugin.c:185
-msgid ""
-"Provides a panel area for status notifier items (application indicators)."
-msgstr ""
-"Предоставляет область панели для элементов оповещения статуса (индикаторов "
-"приложений)."
-
-#: ../panel-plugin/statusnotifier.desktop.in.h:1
-msgid "Status Notifier Plugin"
-msgstr "Модуль оповещений статуса"
-
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Предоставляет область панели для элементов оповещения статуса (индикаторов "
 "приложений)"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Модуль оповещений статуса"
