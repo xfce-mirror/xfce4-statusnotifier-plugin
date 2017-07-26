@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"POT-Creation-Date: 2017-07-25 12:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017\n"
 "Language-Team: Indonesian (https://www.transifex.com/xfce/teams/16840/id/)\n"
@@ -39,9 +39,8 @@ msgid "Arrange items in a single row"
 msgstr "Atur item dalam satu baris"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
-msgid ""
-"If enabled, ensure that the items are laid out in a single row or column"
-msgstr "Jika diaktifkan, pastikan item diletakkan dalam satu baris atau kolom"
+msgid "If enabled, ensure that the items are laid out in a single row"
+msgstr "Jika diaktifkan, pastikan item diletakkan dalam satu baris"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -112,17 +111,12 @@ msgid "Known Items"
 msgstr "Item yang Diketahui"
 
 #: ../panel-plugin/sn-plugin.c:185
-msgid ""
-"Provides a panel area for status notifier items (application indicators)."
-msgstr ""
-"Menyediakan area panel untuk item pemberitahuan status (indikator aplikasi)."
-
-#: ../panel-plugin/statusnotifier.desktop.in.h:1
-msgid "Status Notifier Plugin"
-msgstr "Pengaya Pemberitahu Status"
-
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Menyediakan area panel untuk item pemberitahuan status (indikator aplikasi)"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Pengaya Pemberitahu Status"
