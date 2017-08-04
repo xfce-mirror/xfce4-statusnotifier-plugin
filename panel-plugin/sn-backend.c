@@ -116,12 +116,6 @@ G_DEFINE_TYPE (SnBackend, sn_backend, G_TYPE_OBJECT)
 
 enum
 {
-  PROP_0,
-  PROP_IO_ENTRY,
-};
-
-enum
-{
   ITEM_ADDED,
   ITEM_REMOVED,
   LAST_SIGNAL
