@@ -910,10 +910,12 @@ sn_item_get_tooltip (SnItem       *item,
   if (subtitle == NULL)
     subtitle = (gpointer)&stub;
 
+  #define sn_subtitle(subtitle) (g_strcmp0 (subtitle, *title) ? subtitle : NULL)
+
   if (item->tooltip_title != NULL && item->tooltip_subtitle != NULL)
     {
       *title = item->tooltip_title;
-      *subtitle = item->tooltip_subtitle;
+      *subtitle = sn_subtitle (item->tooltip_subtitle);
     }
   else if (item->attention_desc != NULL)
     {
@@ -921,12 +923,12 @@ sn_item_get_tooltip (SnItem       *item,
       if (item->tooltip_title != NULL)
         {
           *title = item->tooltip_title;
-          *subtitle = item->attention_desc;
+          *subtitle = sn_subtitle (item->attention_desc);
         }
       else if (item->title != NULL)
         {
           *title = item->title;
-          *subtitle = item->attention_desc;
+          *subtitle = sn_subtitle (item->attention_desc);
         }
       else
         {
@@ -940,12 +942,12 @@ sn_item_get_tooltip (SnItem       *item,
       if (item->tooltip_title != NULL)
         {
           *title = item->tooltip_title;
-          *subtitle = item->icon_desc;
+          *subtitle = sn_subtitle (item->icon_desc);
         }
       else if (item->title != NULL)
         {
           *title = item->title;
-          *subtitle = item->icon_desc;
+          *subtitle = sn_subtitle (item->icon_desc);
         }
       else
         {
@@ -969,7 +971,7 @@ sn_item_get_tooltip (SnItem       *item,
       *subtitle = NULL;
     }
 
-  #undef sn_non_empty
+  #undef sn_subtitle
 }
 
 
