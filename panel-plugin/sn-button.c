@@ -239,7 +239,7 @@ sn_button_button_press (GtkWidget      *widget,
       return FALSE;
     }
 
-  if (event->button == 3 && (button->menu_only || menu_is_primary))
+  if (event->button == 3 && menu_is_primary)
     {
       /* menu is available by left click, so show the panel menu instead */
       return FALSE;
