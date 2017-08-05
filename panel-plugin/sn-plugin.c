@@ -104,7 +104,6 @@ static void
 sn_plugin_free (XfcePanelPlugin *panel_plugin)
 {
   SnPlugin *plugin = XFCE_SN_PLUGIN (panel_plugin);
-  GList    *children, *li;
 
   /* remove children so they won't use unrefed SnItems and SnConfig */
   gtk_container_remove (GTK_CONTAINER (panel_plugin), plugin->box);
