@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2017\n"
+"Language-Team: Serbian (https://www.transifex.com/xfce/teams/16840/sr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../panel-plugin/sn-dialog.c:368
+msgid "Clear"
+msgstr "Очисти"
+
+#: ../panel-plugin/sn-dialog.c:369
+msgid "Are you sure you want to clear the list of known items?"
+msgstr "Да ли сигурно желите очистити списак познатих ставки?"
+
+#: ../panel-plugin/sn-dialog.glade.h:1
+msgid "Status Notifier Items"
+msgstr "Ставке стања обавештења"
+
+#: ../panel-plugin/sn-dialog.glade.h:2
+msgid "_Maximum icon size (px):"
+msgstr "_Дозвољено увелање сличице (px):"
+
+#: ../panel-plugin/sn-dialog.glade.h:3
+msgid "Arrange items in a single row"
+msgstr "Распореди ставке у једном реду"
+
+#: ../panel-plugin/sn-dialog.glade.h:4
+msgid "If enabled, ensure that the items are laid out in a single row"
+msgstr "Ако је омогућено размешта ставке у један ред"
+
+#: ../panel-plugin/sn-dialog.glade.h:5
+msgid "Square icons"
+msgstr "Четвртасте сличице"
+
+#: ../panel-plugin/sn-dialog.glade.h:6
+msgid "Item buttons will take a square when it's possible"
+msgstr "Дугмад ставки ће бити четвртаста ако може"
+
+#: ../panel-plugin/sn-dialog.glade.h:7
+msgid "Symbolic icons"
+msgstr "Значењске сличице"
+
+#: ../panel-plugin/sn-dialog.glade.h:8
+msgid "Load symbolic icons if available"
+msgstr "Учитај значењске сличице ако су доступне"
+
+#: ../panel-plugin/sn-dialog.glade.h:9
+msgid "Appearance"
+msgstr "Изглед"
+
+#: ../panel-plugin/sn-dialog.glade.h:10
+msgid "Menu is primary action"
+msgstr "Изборник је главна радња"
+
+#: ../panel-plugin/sn-dialog.glade.h:11
+msgid "Left click will always display the menu for item"
+msgstr "Леви клик ће увек приказивати изборник ставке"
+
+#: ../panel-plugin/sn-dialog.glade.h:12
+msgid "Behavior"
+msgstr "Понашање"
+
+#: ../panel-plugin/sn-dialog.glade.h:13
+msgid "Hide items by default"
+msgstr "Скриј ставке подразумевано"
+
+#: ../panel-plugin/sn-dialog.glade.h:14
+msgid "When enabled, all new items will be marked as \"Hidden\""
+msgstr "Ако је омогућено, све нове ставке ће бити означене „скритим“"
+
+#: ../panel-plugin/sn-dialog.glade.h:15
+msgid "Item"
+msgstr "Ставка"
+
+#: ../panel-plugin/sn-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Скривен"
+
+#: ../panel-plugin/sn-dialog.glade.h:17
+msgid "Move the selected item one row up"
+msgstr "Премести изабрану ставку један ред навише"
+
+#: ../panel-plugin/sn-dialog.glade.h:18
+msgid "Move the selected item one row down"
+msgstr "Премести изабрану ставку један ред наниже"
+
+#: ../panel-plugin/sn-dialog.glade.h:19
+msgid "C_lear Known Items"
+msgstr "Очисти познате ставке"
+
+#: ../panel-plugin/sn-dialog.glade.h:20
+msgid "Resets the list of items and their visibility settings"
+msgstr "Враћа списак ставки и поставке видљивости на подразумевано"
+
+#: ../panel-plugin/sn-dialog.glade.h:21
+msgid "Known Items"
+msgstr "Познате ставке"
+
+#: ../panel-plugin/sn-plugin.c:185
+#: ../panel-plugin/statusnotifier.desktop.in.h:2
+msgid ""
+"Provides a panel area for status notifier items (application indicators)"
+msgstr ""
+"Обезбеђује област на полици за ставке обавештајног стања (указиваче "
+"програма)"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Прикључак обавештајног стања"
