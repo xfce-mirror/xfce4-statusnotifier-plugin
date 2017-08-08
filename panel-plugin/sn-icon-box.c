@@ -170,7 +170,8 @@ GtkWidget *
 sn_icon_box_new (SnItem   *item,
                  SnConfig *config)
 {
-  SnIconBox *box = g_object_new (XFCE_TYPE_SN_ICON_BOX, NULL);
+  SnIconBox   *box = g_object_new (XFCE_TYPE_SN_ICON_BOX, NULL);
+  GtkSettings *settings;
 
   g_return_val_if_fail (XFCE_IS_SN_CONFIG (config), NULL);
 
@@ -185,11 +186,17 @@ sn_icon_box_new (SnItem   *item,
   gtk_widget_set_parent (box->overlay, GTK_WIDGET (box));
   gtk_widget_show (box->overlay);
 
+  settings = gtk_settings_get_default ();
+
   sn_signal_connect_weak_swapped (config, "notify::icon-size",
                                   G_CALLBACK (sn_icon_box_icon_changed), box);
   sn_signal_connect_weak_swapped (config, "notify::symbolic-icons",
                                   G_CALLBACK (sn_icon_box_icon_changed), box);
   sn_signal_connect_weak_swapped (item, "icon-changed",
+                                  G_CALLBACK (sn_icon_box_icon_changed), box);
+  sn_signal_connect_weak_swapped (settings, "notify::gtk-theme-name",
+                                  G_CALLBACK (sn_icon_box_icon_changed), box);
+  sn_signal_connect_weak_swapped (settings, "notify::gtk-icon-theme-name",
                                   G_CALLBACK (sn_icon_box_icon_changed), box);
   sn_icon_box_icon_changed (GTK_WIDGET (box));
 
