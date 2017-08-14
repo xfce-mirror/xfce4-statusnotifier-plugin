@@ -77,6 +77,7 @@ struct _SnButton
 
   guint                menu_deactivate_handler;
   guint                menu_size_allocate_handler;
+  guint                menu_size_allocate_idle_handler;
 };
 
 G_DEFINE_TYPE (SnButton, sn_button, GTK_TYPE_BUTTON)
@@ -134,6 +135,7 @@ sn_button_init (SnButton *button)
 
   button->menu_deactivate_handler = 0;
   button->menu_size_allocate_handler = 0;
+  button->menu_size_allocate_idle_handler = 0;
 
   gtk_widget_set_halign (GTK_WIDGET (button), GTK_ALIGN_FILL);
   gtk_widget_set_valign (GTK_WIDGET (button), GTK_ALIGN_FILL);
@@ -206,6 +208,9 @@ sn_button_finalize (GObject *object)
 
   if (button->menu_size_allocate_handler != 0)
     g_signal_handler_disconnect (button->menu, button->menu_size_allocate_handler);
+
+  if (button->menu_size_allocate_idle_handler != 0)
+    g_source_remove (button->menu_size_allocate_idle_handler);
 
   G_OBJECT_CLASS (sn_button_parent_class)->finalize (object);
 }
@@ -344,6 +349,34 @@ sn_button_scroll_event (GtkWidget      *widget,
 
 
 
+static gboolean
+sn_button_menu_size_changed_idle (gpointer user_data)
+{
+  SnButton *button = user_data;
+
+  gtk_menu_reposition (GTK_MENU (button->menu));
+  button->menu_size_allocate_idle_handler = 0;
+
+  return G_SOURCE_REMOVE;
+}
+
+
+
+static void
+sn_button_menu_size_changed (GtkWidget *widget)
+{
+  SnButton *button = XFCE_SN_BUTTON (widget);
+
+  /* defer gtk_menu_reposition call since it may not work in size event handler */
+  if (button->menu_size_allocate_idle_handler == 0)
+    {
+      button->menu_size_allocate_idle_handler =
+        g_idle_add (sn_button_menu_size_changed_idle, button);
+    }
+}
+
+
+
 static void
 sn_button_menu_changed (GtkWidget *widget,
                         SnItem    *item)
@@ -367,6 +400,12 @@ sn_button_menu_changed (GtkWidget *widget,
           button->menu_size_allocate_handler = 0;
         }
 
+      if (button->menu_size_allocate_idle_handler != 0)
+        {
+          g_source_remove (button->menu_size_allocate_idle_handler);
+          button->menu_size_allocate_idle_handler = 0;
+        }
+
       gtk_menu_detach (GTK_MENU (button->menu));
     }
 
@@ -378,8 +417,8 @@ sn_button_menu_changed (GtkWidget *widget,
       gtk_menu_attach_to_widget (GTK_MENU (button->menu), GTK_WIDGET (button), NULL);
       /* restore menu position to its corner if size was changed */
       button->menu_size_allocate_handler =
-        g_signal_connect (button->menu, "size-allocate",
-                          G_CALLBACK (gtk_menu_reposition), NULL);
+        g_signal_connect_swapped (button->menu, "size-allocate",
+                                  G_CALLBACK (sn_button_menu_size_changed), button);
     }
 }
 
