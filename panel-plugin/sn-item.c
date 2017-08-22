@@ -778,7 +778,7 @@ sn_item_get_all_properties_result (GObject      *source_object,
     else if (!g_strcmp0 (name, "IconAccessibleDesc"))
       {
         str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, icon_desc, update_icon);
+        update_new_string (str_val1, icon_desc, update_tooltip);
       }
     else if (!g_strcmp0 (name, "AttentionIconName"))
       {
@@ -793,7 +793,7 @@ sn_item_get_all_properties_result (GObject      *source_object,
     else if (!g_strcmp0 (name, "AttentionAccessibleDesc"))
       {
         str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, attention_desc, update_icon);
+        update_new_string (str_val1, attention_desc, update_tooltip);
       }
     else if (!g_strcmp0 (name, "OverlayIconName"))
       {
