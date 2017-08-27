@@ -335,6 +335,8 @@ sn_backend_watcher_name_owner_changed (GDBusConnection *connection,
       sn_watcher_emit_status_notifier_item_unregistered (backend->watcher_skeleton, key);
       g_free (key);
     }
+
+  g_free (new_owner);
 }
 
 

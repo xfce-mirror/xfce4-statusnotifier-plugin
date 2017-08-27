@@ -403,11 +403,15 @@ sn_item_name_owner_changed (GDBusConnection *connection,
                             GVariant        *parameters,
                             gpointer         user_data)
 {
-  SnItem *item = user_data;
-  gchar  *new_owner;
+  SnItem   *item = user_data;
+  gchar    *new_owner;
+  gboolean  finish;
 
   g_variant_get (parameters, "(sss)", NULL, NULL, &new_owner);
-  return_and_finish_if_true (new_owner == NULL || strlen (new_owner) == 0);
+  finish = new_owner == NULL || strlen (new_owner) == 0;
+  g_free (new_owner);
+
+  return_and_finish_if_true (finish);
 }
 
 
@@ -561,6 +565,8 @@ sn_item_signal_received (GDBusProxy *proxy,
     {
       g_variant_get (parameters, "(s)", &status);
       exposed = sn_item_status_is_exposed (status);
+      g_free (status);
+
       if (exposed != item->exposed)
         {
           item->exposed = exposed;
@@ -644,6 +650,8 @@ sn_item_extract_pixbuf (GVariant *variant)
             }
         }
     }
+
+  g_variant_iter_free (iter);
 
   if (array != NULL)
     {
@@ -745,6 +753,8 @@ sn_item_get_all_properties_result (GObject      *source_object,
         g_variant_get (value, "(sa(iiay)ss)", NULL, NULL, &str_val1, &str_val2);
         update_new_string (str_val1, tooltip_title, update_tooltip);
         update_new_string (str_val2, tooltip_subtitle, update_tooltip);
+        g_free (str_val1);
+        g_free (str_val2);
       }
     else if (!g_strcmp0 (name, "ItemIsMenu"))
       {
