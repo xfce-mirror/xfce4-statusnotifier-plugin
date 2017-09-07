@@ -687,8 +687,9 @@ sn_item_get_all_properties_result (GObject      *source_object,
   const gchar  *name;
   GVariant     *value;
 
-  const gchar  *str_val1;
-  const gchar  *str_val2;
+  const gchar  *cstr_val1;
+  gchar        *str_val1;
+  gchar        *str_val2;
   gboolean      bool_val1;
   GdkPixbuf    *pb_val1;
 
@@ -735,8 +736,8 @@ sn_item_get_all_properties_result (GObject      *source_object,
       }
     else if (!g_strcmp0 (name, "Status"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        bool_val1 = sn_item_status_is_exposed (str_val1);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        bool_val1 = sn_item_status_is_exposed (cstr_val1);
         if (bool_val1 != item->exposed)
           {
             item->exposed = bool_val1;
@@ -745,8 +746,8 @@ sn_item_get_all_properties_result (GObject      *source_object,
       }
     else if (!g_strcmp0 (name, "Title"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, title, update_tooltip);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, title, update_tooltip);
       }
     else if (!g_strcmp0 (name, "ToolTip"))
       {
@@ -767,18 +768,18 @@ sn_item_get_all_properties_result (GObject      *source_object,
       }
     else if (!g_strcmp0 (name, "Menu"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, menu_object_path, update_menu);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, menu_object_path, update_menu);
       }
     else if (!g_strcmp0 (name, "IconThemePath"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, icon_theme_path, update_icon);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, icon_theme_path, update_icon);
       }
     else if (!g_strcmp0 (name, "IconName"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, icon_name, update_icon);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, icon_name, update_icon);
       }
     else if (!g_strcmp0 (name, "IconPixmap"))
       {
@@ -787,13 +788,13 @@ sn_item_get_all_properties_result (GObject      *source_object,
       }
     else if (!g_strcmp0 (name, "IconAccessibleDesc"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, icon_desc, update_tooltip);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, icon_desc, update_tooltip);
       }
     else if (!g_strcmp0 (name, "AttentionIconName"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, attention_icon_name, update_icon);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, attention_icon_name, update_icon);
       }
     else if (!g_strcmp0 (name, "AttentionIconPixmap"))
       {
@@ -802,13 +803,13 @@ sn_item_get_all_properties_result (GObject      *source_object,
       }
     else if (!g_strcmp0 (name, "AttentionAccessibleDesc"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, attention_desc, update_tooltip);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, attention_desc, update_tooltip);
       }
     else if (!g_strcmp0 (name, "OverlayIconName"))
       {
-        str_val1 = g_variant_get_string (value, NULL);
-        update_new_string (str_val1, overlay_icon_name, update_icon);
+        cstr_val1 = g_variant_get_string (value, NULL);
+        update_new_string (cstr_val1, overlay_icon_name, update_icon);
       }
     else if (!g_strcmp0 (name, "OverlayIconPixmap"))
       {
