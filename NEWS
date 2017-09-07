@@ -1,3 +1,18 @@
+0.2.0
+=====
+- Added support for symbolic icons
+- Fixed incorrect positioning of menu
+- Fixed incorrect icon size
+- Right click now always opens menu
+  (unless "Menu is primary action" is checked)
+- Ctrl + right click now opens plugin menu
+- A complete StatusNotifierWatcher spec was implemented
+- Fixed some memory leaks
+- Translation updates: Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, French, German, Hebrew, Indonesian, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Polish, Portuguese, Portuguese (Brazil),
+  Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Turkish
+
 0.1.0
 =====
 - Initial release.
