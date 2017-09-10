@@ -305,20 +305,21 @@ sn_box_measure_and_allocate (GtkWidget *widget,
   SnBox          *box = XFCE_SN_BOX (widget);
   SnButton       *button;
   GList          *known_items, *li, *li_int, *li_tmp;
-  gint            panel_size, icon_size, hx_size, hy_size, nrows;
-  gboolean        single_row, single_horizontal, square_icons;
+  gint            panel_size, config_nrows, icon_size, hx_size, hy_size, nrows;
+  gboolean        single_row, single_horizontal, square_icons, rect_child;
   gint            total_length, column_length, item_length, row;
   GtkRequisition  child_req;
   GtkAllocation   child_alloc;
 
   panel_size = sn_config_get_panel_size (box->config);
+  config_nrows = sn_config_get_nrows (box->config);
   icon_size = sn_config_get_icon_size (box->config);
   single_row = sn_config_get_single_row (box->config);
   square_icons = sn_config_get_square_icons (box->config);
   icon_size += 2; /* additional padding */
   if (square_icons)
     {
-      nrows = single_row ? 1 : MAX (1, sn_config_get_nrows (box->config));
+      nrows = single_row ? 1 : MAX (1, config_nrows);
       hx_size = hy_size = panel_size / nrows;
     }
   else
@@ -348,17 +349,26 @@ sn_box_measure_and_allocate (GtkWidget *widget,
 
           gtk_widget_get_preferred_size (GTK_WIDGET (button), NULL, &child_req);
 
+          rect_child = child_req.width > child_req.height;
           if (horizontal)
             {
-              item_length = square_icons ? hx_size : MAX (hx_size, child_req.width);
+              if (square_icons && (!rect_child || config_nrows >= 2))
+                item_length = hx_size;
+              else
+                item_length = MAX (hx_size, child_req.width);
+
               column_length = MAX (column_length, item_length);
               single_horizontal = FALSE;
             }
           else
             {
-              item_length = square_icons ? hy_size : MAX (MIN (panel_size, child_req.width), hy_size);
               column_length = hx_size;
-              single_horizontal = !square_icons && child_req.width > child_req.height;
+              single_horizontal = rect_child;
+
+              if (square_icons)
+                item_length = single_horizontal ? panel_size : hy_size;
+              else
+                item_length = MAX (MIN (panel_size, child_req.width), hy_size);
             }
 
           if (single_horizontal)
