@@ -356,7 +356,7 @@ sn_box_measure_and_allocate (GtkWidget *widget,
             }
           else
             {
-              item_length = MAX (MIN (panel_size, child_req.width), hy_size);
+              item_length = square_icons ? hy_size : MAX (MIN (panel_size, child_req.width), hy_size);
               column_length = hx_size;
               single_horizontal = !square_icons && child_req.width > child_req.height;
             }
