@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 23:03+0200\n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>, 2017\n"
 "Language-Team: Danish (https://www.transifex.com/xfce/teams/16840/da/)\n"
@@ -72,7 +72,7 @@ msgstr "Venstreklik vil altid vise menuen for element"
 
 #: ../panel-plugin/sn-dialog.glade.h:12
 msgid "Behavior"
-msgstr "Adfærd"
+msgstr "Opførsel"
 
 #: ../panel-plugin/sn-dialog.glade.h:13
 msgid "Hide items by default"
