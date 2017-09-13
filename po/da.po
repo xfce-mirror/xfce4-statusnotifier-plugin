@@ -80,7 +80,7 @@ msgstr "Skjul elementer som standard"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
-msgstr "Når den er aktiveret, mærkes alle nye elementer som \"Skjult\"."
+msgstr "Når den er aktiveret, mærkes alle nye elementer som \"Skjult\""
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
