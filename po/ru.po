@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-statusnotifier-plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-26 12:31+0200\n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Viktor Odintsev <ninetls@xfce.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/xfce/teams/16840/ru/)\n"
@@ -44,7 +44,7 @@ msgstr "Если включено, располагать элементы в о
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
-msgstr "Значки квадратом"
+msgstr "Квадратные значки"
 
 #: ../panel-plugin/sn-dialog.glade.h:6
 msgid "Item buttons will take a square when it's possible"
