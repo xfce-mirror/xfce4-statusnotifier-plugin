@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Любомир Василев <lyubomirv@abv.bg>, 2017\n"
 "Language-Team: Bulgarian (https://www.transifex.com/xfce/teams/16840/bg/)\n"
@@ -39,9 +39,8 @@ msgid "Arrange items in a single row"
 msgstr "Подреждане на елементите в един ред"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
-msgid ""
-"If enabled, ensure that the items are laid out in a single row or column"
-msgstr "Ако е включено, елементите ще бъдат разположени в един ред или колона"
+msgid "If enabled, ensure that the items are laid out in a single row"
+msgstr "Ако е включено, уверете се, че елементите са разположени в един ред"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -113,19 +112,13 @@ msgid "Known Items"
 msgstr "Познати елементи"
 
 #: ../panel-plugin/sn-plugin.c:185
-msgid ""
-"Provides a panel area for status notifier items (application indicators)."
-msgstr ""
-"Осигурява зона в панела за елементите на Уведомление за състоянието "
-"(индикаторите на програмите)."
-
-#: ../panel-plugin/statusnotifier.desktop.in.h:1
-msgid "Status Notifier Plugin"
-msgstr "Добавка Уведомление за състоянието"
-
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Осигурява зона в панела за елементите на Уведомление за състоянието "
 "(индикаторите на програмите)"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Добавка Уведомление за състоянието"
