@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>, 2017\n"
 "Language-Team: Turkish (https://www.transifex.com/xfce/teams/16840/tr/)\n"
@@ -39,11 +39,9 @@ msgid "Arrange items in a single row"
 msgstr "Ögeleri tek satırda ayarla"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
-msgid ""
-"If enabled, ensure that the items are laid out in a single row or column"
+msgid "If enabled, ensure that the items are laid out in a single row"
 msgstr ""
-"Etkinleştirilirse, ögelerin tek bir satır veya sütunda düzenlendiğinden emin"
-" olun"
+"Etkinleştirilirse, ögelerin tek bir satırda düzenlendiğinden emin olun"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -114,17 +112,12 @@ msgid "Known Items"
 msgstr "Bilinen ögeler"
 
 #: ../panel-plugin/sn-plugin.c:185
-msgid ""
-"Provides a panel area for status notifier items (application indicators)."
-msgstr ""
-"Durum bildirici ögeleri (uygulama bildirimleri) için bir panel alanı sağlar."
-
-#: ../panel-plugin/statusnotifier.desktop.in.h:1
-msgid "Status Notifier Plugin"
-msgstr "Durum Bildirici Ögeleri"
-
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Durum bildirici ögeleri (uygulama bildirimleri) için bir panel alanı sağlar"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Durum Bildirici Ögeleri"
