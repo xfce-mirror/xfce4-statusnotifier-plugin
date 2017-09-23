@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 13:47+0200\n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2017\n"
 "Language-Team: Slovak (https://www.transifex.com/xfce/teams/16840/sk/)\n"
@@ -39,10 +39,8 @@ msgid "Arrange items in a single row"
 msgstr "Rozvrhnúť položky v jednom riadku"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
-msgid ""
-"If enabled, ensure that the items are laid out in a single row or column"
+msgid "If enabled, ensure that the items are laid out in a single row"
 msgstr ""
-"Ak je zapnuté, zaistí, aby boli všetky položky v jednom riadku alebo stĺpci"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -115,17 +113,12 @@ msgid "Known Items"
 msgstr "Známe položky"
 
 #: ../panel-plugin/sn-plugin.c:185
+#: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
-"Provides a panel area for status notifier items (application indicators)."
+"Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Poskytuje oblasť panela na stavové informačné položky (indikátory aplikácií)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
 msgstr "Zásuvný modul Stavový informátor"
-
-#: ../panel-plugin/statusnotifier.desktop.in.h:2
-msgid ""
-"Provides a panel area for status notifier items (application indicators)"
-msgstr ""
-"Poskytuje oblasť panela na stavové informačné položky (indikátory aplikácií)"
