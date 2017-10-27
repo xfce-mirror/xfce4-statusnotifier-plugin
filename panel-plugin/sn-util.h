@@ -19,7 +19,7 @@
 #ifndef __SN_UTIL_H__
 #define __SN_UTIL_H__
 
-#include <glib-object.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
@@ -32,6 +32,8 @@ gulong                 sn_signal_connect_weak_swapped          (gpointer        
                                                                 const gchar             *detailed_signal,
                                                                 GCallback                c_handler,
                                                                 gpointer                 data);
+
+gboolean               sn_container_has_children               (GtkWidget               *widget);
 
 G_END_DECLS
 

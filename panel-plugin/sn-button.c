@@ -257,7 +257,7 @@ sn_button_button_press (GtkWidget      *widget,
 
   if ((event->button == 1 && (button->menu_only || menu_is_primary)) || event->button == 3)
     {
-      if (button->menu != NULL)
+      if (button->menu != NULL && sn_container_has_children (button->menu))
         {
           button->menu_deactivate_handler = 
             g_signal_connect_swapped (G_OBJECT (button->menu), "deactivate",

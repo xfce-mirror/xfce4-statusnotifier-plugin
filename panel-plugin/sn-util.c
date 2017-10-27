@@ -136,3 +136,30 @@ sn_signal_connect_weak_swapped (gpointer     instance,
   return sn_signal_connect_weak_internal (instance, detailed_signal,
                                           c_handler, data, G_CONNECT_SWAPPED);
 }
+
+
+
+static void
+sn_container_has_children_callback (GtkWidget *widget,
+                                    gpointer   user_data)
+{
+  gboolean *has_children = user_data;
+  *has_children = TRUE;
+}
+
+
+
+gboolean
+sn_container_has_children (GtkWidget *widget)
+{
+  gboolean has_children = FALSE;
+
+  if (GTK_IS_CONTAINER (widget))
+    {
+      gtk_container_foreach (GTK_CONTAINER (widget),
+                             sn_container_has_children_callback,
+                             &has_children);
+    }
+
+  return has_children;
+}
