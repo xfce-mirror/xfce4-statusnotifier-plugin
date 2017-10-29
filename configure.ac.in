@@ -8,10 +8,10 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([sn_version_major], [0])
 m4_define([sn_version_minor], [2])
-m4_define([sn_version_micro], [0])
+m4_define([sn_version_micro], [1])
 m4_define([sn_version_nano],  [])
 m4_define([sn_version_build], [@REVISION@])
-m4_define([sn_version_tag],   [git])
+m4_define([sn_version_tag],   [])
 m4_define([sn_version], [sn_version_major().sn_version_minor().sn_version_micro()ifelse(sn_version_nano(), [], [], [.sn_version_nano()])ifelse(sn_version_tag(), [git], [sn_version_tag()-sn_version_build()], [sn_version_tag()])])
 
 dnl ***************************

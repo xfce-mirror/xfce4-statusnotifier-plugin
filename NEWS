@@ -1,3 +1,13 @@
+0.2.1
+=====
+- Added support for rectangular icons even when square icons option is enabled
+- Empty menus are never displayed anymore
+- Fixed receiving of incorrect data from applications
+- Fixed various icon size issues
+- Translation updates: Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Czech, Danish, Dutch, Indonesian, Lithuanian, Norwegian Bokmål, Portuguese,
+  Russian, Slovak, Slovenian, Spanish, Swedish, Turkish, Ukrainian
+
 0.2.0
 =====
 - Added support for symbolic icons
