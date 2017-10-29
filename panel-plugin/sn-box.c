@@ -352,7 +352,7 @@ sn_box_measure_and_allocate (GtkWidget *widget,
           rect_child = child_req.width > child_req.height;
           if (horizontal)
             {
-              if (square_icons && (!rect_child || config_nrows >= 2 && !single_row))
+              if (square_icons && (!rect_child || (config_nrows >= 2 && !single_row)))
                 item_length = hx_size;
               else
                 item_length = MAX (hx_size, child_req.width);
