@@ -28,7 +28,7 @@ msgstr "Ви дійсно бажаєте очистити список з від
 
 #: ../panel-plugin/sn-dialog.glade.h:1
 msgid "Status Notifier Items"
-msgstr "Елементи повідомлень статусу."
+msgstr "Елементи повідомлень статусу"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
@@ -68,7 +68,7 @@ msgstr "Меню є основною дією"
 
 #: ../panel-plugin/sn-dialog.glade.h:11
 msgid "Left click will always display the menu for item"
-msgstr ""
+msgstr "Ліве клацання буде завжди показувати меню для елемента"
 
 #: ../panel-plugin/sn-dialog.glade.h:12
 msgid "Behavior"
@@ -76,11 +76,11 @@ msgstr "Поведінка"
 
 #: ../panel-plugin/sn-dialog.glade.h:13
 msgid "Hide items by default"
-msgstr ""
+msgstr "Типово приховувати елементи"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
-msgstr ""
+msgstr "Якщо зазначено, тоді всі нові елементи будуть позначені як \"Приховані\""
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
@@ -92,19 +92,19 @@ msgstr "Приховано"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr ""
+msgstr "Перенести вибрані елементи на один рядок вище"
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr ""
+msgstr "Перенести вибрані елементи на один рядок нижче"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
-msgstr ""
+msgstr "Очистити _відомі елементи"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
-msgstr ""
+msgstr "Відновити список елементів і налаштування їх видимості. "
 
 #: ../panel-plugin/sn-dialog.glade.h:21
 msgid "Known Items"
@@ -115,7 +115,9 @@ msgstr "Відомі елементи"
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
+"Забезпечує область панелі для елементів повідомлення статусу (індикатори "
+"програм)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr ""
+msgstr "Додаток повідомлень статусу"
