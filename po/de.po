@@ -81,7 +81,7 @@ msgstr "Einträge standardmäßig verstecken"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
-msgstr "Falls aktiviert, werden alle neuen Einträge als \"Versteckt\" markiert"
+msgstr "Falls aktiviert, werden alle neuen Einträge als »Versteckt« markiert"
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
@@ -93,11 +93,11 @@ msgstr "Versteckt"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr "Verschiebe den gewählten Eintrage eine Zeile nach oben"
+msgstr "Den gewählten Eintrage eine Zeile nach oben verschieben"
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr "Verschiebe den gewählten Eintrage eine Zeile nach unten"
+msgstr "Den gewählten Eintrage eine Zeile nach unten verschieben"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
