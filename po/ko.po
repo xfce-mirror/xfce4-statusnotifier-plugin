@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../panel-plugin/sn-dialog.c:368
 msgid "Clear"
-msgstr "삭재"
+msgstr "청소"
 
 #: ../panel-plugin/sn-dialog.c:369
 msgid "Are you sure you want to clear the list of known items?"
