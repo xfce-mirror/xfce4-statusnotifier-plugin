@@ -32,11 +32,11 @@ msgstr "Éléments indicateurs d’état"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "Taille d’icône _maximale (px) :"
+msgstr "Taille d’icône _maximale (px) :"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
-msgstr "Arranger les éléments sur une seule ligne"
+msgstr "Disposer les éléments sur une seule ligne"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
 msgid "If enabled, ensure that the items are laid out in a single row"
@@ -49,7 +49,7 @@ msgstr "Icônes carrées"
 #: ../panel-plugin/sn-dialog.glade.h:6
 msgid "Item buttons will take a square when it's possible"
 msgstr ""
-"Les boutons d'éléments prendront une forme carrée lorsque c’est possible."
+"Les boutons d’éléments prendront une forme carrée lorsque c’est possible."
 
 #: ../panel-plugin/sn-dialog.glade.h:7
 msgid "Symbolic icons"
@@ -82,7 +82,7 @@ msgstr "Masquer les éléments par défaut"
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
 msgstr ""
-"Si activé, tous les nouveaux éléments seront marqués comme « masqués »"
+"Si activé, tous les nouveaux éléments seront marqués comme « masqués »"
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
@@ -94,11 +94,11 @@ msgstr "Masqué"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr "Déplacer l'élément sélectionné d’une ligne vers le haut"
+msgstr "Déplacer l’élément sélectionné d’une ligne vers le haut"
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr "Déplacer l'élément sélectionné d’une ligne vers le bas"
+msgstr "Déplacer l’élément sélectionné d’une ligne vers le bas"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
@@ -118,7 +118,7 @@ msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Fournit une zone du tableau de bord pour les éléments indicateurs d’état "
-"(indicateurs d'application)"
+"(indicateurs d’application)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
