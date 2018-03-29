@@ -32,7 +32,7 @@ msgstr "状態通知アイテム"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "最大アイコンサイズ(_M) (px):"
+msgstr "最大アイコンサイズ (px) (_M):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
