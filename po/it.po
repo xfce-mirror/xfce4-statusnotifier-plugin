@@ -96,29 +96,31 @@ msgstr "Nascosto"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr "Muovere l'elemento selezionato per spostarlo di una riga sopra"
+msgstr "Muovi l'elemento selezionato alla riga sopra"
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr ""
+msgstr "Muovi l'elemento selezionato alla riga sotto"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
-msgstr ""
+msgstr "_Pulisci gli elementi visti"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
 msgstr ""
+"Ripristina la lista degli elementi e le loro impostazioni di visibilità"
 
 #: ../panel-plugin/sn-dialog.glade.h:21
 msgid "Known Items"
-msgstr ""
+msgstr "Elementi visti"
 
 #: ../panel-plugin/sn-plugin.c:185
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
+"Fornisce un'area del pannello per le notifiche (indicatori di applicazione)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
