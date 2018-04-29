@@ -92,30 +92,31 @@ msgstr "Rejtett"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr ""
+msgstr "A kiválasztott elem mozgatása egy sorral feljebb."
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr ""
+msgstr "A kiválasztott elem mozgatása egy sorral lejjebb."
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
-msgstr ""
+msgstr "Ismert elemek _törlése"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
-msgstr ""
+msgstr "Az elemek listájának és láthatóságának alaphelyzetbe állítása"
 
 #: ../panel-plugin/sn-dialog.glade.h:21
 msgid "Known Items"
-msgstr ""
+msgstr "Ismert elemek"
 
 #: ../panel-plugin/sn-plugin.c:185
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
+"Panelterületet biztosít az állapotjelző elemeknek (alkalmazásindikátorok)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr ""
+msgstr "Állapotjelző bővítmény"
