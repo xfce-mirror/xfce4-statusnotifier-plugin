@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.me>, 2018\n"
+"Last-Translator: Francesco Galizzi <f.galizzi92@gmail.com>, 2017\n"
 "Language-Team: Italian (https://www.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +24,15 @@ msgstr "Svuota"
 
 #: ../panel-plugin/sn-dialog.c:369
 msgid "Are you sure you want to clear the list of known items?"
-msgstr "Sei sicuro di voler svuotare la lista degli elementi noti?"
+msgstr "Svuotare davvero la lista degli elementi conosciuti?"
 
 #: ../panel-plugin/sn-dialog.glade.h:1
 msgid "Status Notifier Items"
-msgstr "Elementi"
+msgstr "Elementi di Status Notifier"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "Dimensione massima dell'icona (px)"
+msgstr "Dimensione massima dell'icona (px):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
@@ -78,7 +78,7 @@ msgstr "Comportamento"
 
 #: ../panel-plugin/sn-dialog.glade.h:13
 msgid "Hide items by default"
-msgstr "Nascondi gli elementi di default"
+msgstr "Nascondi gli elementi per impostazione predefinita"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
@@ -96,15 +96,15 @@ msgstr "Nascosto"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr "Muovi l'elemento selezionato alla riga sopra"
+msgstr "Sposta l'elemento selezionato di una riga sopra"
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr "Muovi l'elemento selezionato alla riga sotto"
+msgstr "Sposta l'elemento selezionato di una riga sotto"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
-msgstr "_Pulisci gli elementi visti"
+msgstr "_Svuota gli elementi conosciuti"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
@@ -113,15 +113,15 @@ msgstr ""
 
 #: ../panel-plugin/sn-dialog.glade.h:21
 msgid "Known Items"
-msgstr "Elementi visti"
+msgstr "Elementi conosciuti"
 
 #: ../panel-plugin/sn-plugin.c:185
 #: ../panel-plugin/statusnotifier.desktop.in.h:2
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
-"Fornisce un'area del pannello per le notifiche (indicatori di applicazione)"
+"Fornisce un'area di pannello per mostrare gli indicatori delle applicazioni"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr "Plugin Status Notifier"
+msgstr "Componente aggiuntivo Status Notifier"
