@@ -116,7 +116,7 @@ msgstr "Ítems coneguts"
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
-"Proporciona una àrea de plafó per als ítems del notificador d'estat "
+"Proporciona una àrea de tauler per als ítems del notificador d'estat "
 "(indicadors d'aplicació)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
