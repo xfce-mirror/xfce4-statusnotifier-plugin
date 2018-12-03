@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Sveinn í Felli <sv1@fellsnet.is>, 2018
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce4-statusnotifier-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-28 16:38+0200\n"
+"PO-Revision-Date: 2017-07-23 15:49+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>, 2018\n"
+"Language-Team: Icelandic (https://www.transifex.com/xfce/teams/16840/is/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: is\n"
+"Plural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"
+
+#: ../panel-plugin/sn-dialog.c:368
+msgid "Clear"
+msgstr "Hreinsa"
+
+#: ../panel-plugin/sn-dialog.c:369
+msgid "Are you sure you want to clear the list of known items?"
+msgstr "Ertu viss um að þú viljir hreinsa listann yfir þekkt atriði?"
+
+#: ../panel-plugin/sn-dialog.glade.h:1
+msgid "Status Notifier Items"
+msgstr "Atriði stöðutilkynninga"
+
+#: ../panel-plugin/sn-dialog.glade.h:2
+msgid "_Maximum icon size (px):"
+msgstr "_Hámarksstærð táknmynda (px):"
+
+#: ../panel-plugin/sn-dialog.glade.h:3
+msgid "Arrange items in a single row"
+msgstr "Raða atriðum í eina röð"
+
+#: ../panel-plugin/sn-dialog.glade.h:4
+msgid "If enabled, ensure that the items are laid out in a single row"
+msgstr "Ef þetta er virkt, er atriðum raðað í einfalda röð"
+
+#: ../panel-plugin/sn-dialog.glade.h:5
+msgid "Square icons"
+msgstr "Ferningslaga táknmyndir"
+
+#: ../panel-plugin/sn-dialog.glade.h:6
+msgid "Item buttons will take a square when it's possible"
+msgstr "Hnappar verða ferningslaga ef mögulegt er"
+
+#: ../panel-plugin/sn-dialog.glade.h:7
+msgid "Symbolic icons"
+msgstr "Táknrænar táknmyndir"
+
+#: ../panel-plugin/sn-dialog.glade.h:8
+msgid "Load symbolic icons if available"
+msgstr "Hlaða inn táknrænum táknmyndum ef það er í boði"
+
+#: ../panel-plugin/sn-dialog.glade.h:9
+msgid "Appearance"
+msgstr "Útlit"
+
+#: ../panel-plugin/sn-dialog.glade.h:10
+msgid "Menu is primary action"
+msgstr "Birting valmyndar er aðalaðgerð"
+
+#: ../panel-plugin/sn-dialog.glade.h:11
+msgid "Left click will always display the menu for item"
+msgstr "Vinstri-smellur mun alltaf birta valmynd atriðis"
+
+#: ../panel-plugin/sn-dialog.glade.h:12
+msgid "Behavior"
+msgstr "Hegðun"
+
+#: ../panel-plugin/sn-dialog.glade.h:13
+msgid "Hide items by default"
+msgstr "Sjálfgefið fela atriði"
+
+#: ../panel-plugin/sn-dialog.glade.h:14
+msgid "When enabled, all new items will be marked as \"Hidden\""
+msgstr "Þegar þetta er virkt verða öll ný atriði merkt sem \"Falið\""
+
+#: ../panel-plugin/sn-dialog.glade.h:15
+msgid "Item"
+msgstr "Atriði"
+
+#: ../panel-plugin/sn-dialog.glade.h:16
+msgid "Hidden"
+msgstr "Falið"
+
+#: ../panel-plugin/sn-dialog.glade.h:17
+msgid "Move the selected item one row up"
+msgstr "Færa valið atriði upp um eina röð"
+
+#: ../panel-plugin/sn-dialog.glade.h:18
+msgid "Move the selected item one row down"
+msgstr "Færa valið atriði niður um eina röð"
+
+#: ../panel-plugin/sn-dialog.glade.h:19
+msgid "C_lear Known Items"
+msgstr "_Hreinsa þekkt atriði"
+
+#: ../panel-plugin/sn-dialog.glade.h:20
+msgid "Resets the list of items and their visibility settings"
+msgstr "Endurstillir lista yfir atriði og sýnileika þeirra"
+
+#: ../panel-plugin/sn-dialog.glade.h:21
+msgid "Known Items"
+msgstr "Þekkt atriði"
+
+#: ../panel-plugin/sn-plugin.c:185
+#: ../panel-plugin/statusnotifier.desktop.in.h:2
+msgid ""
+"Provides a panel area for status notifier items (application indicators)"
+msgstr ""
+"Býr til svæði á skjástiku fyrir atriði stöðutilkynninga (ástandsvísa "
+"forrita)"
+
+#: ../panel-plugin/statusnotifier.desktop.in.h:1
+msgid "Status Notifier Plugin"
+msgstr "Stöðutilkynningaviðbót"
