@@ -728,12 +728,12 @@ sn_item_get_all_properties_result (GObject      *source_object,
 
   #define update_new_string(val, entry, update_what) \
   if (g_strcmp0 (string_empty_null (val), string_empty_null (item->entry))) \
-  { \
-    g_free (item->entry); \
-    item->entry = (val) != NULL && strlen (val) > 0 \
-                  ? g_strdup (val) : NULL; \
-    update_what = TRUE; \
-  }
+    { \
+      g_free (item->entry); \
+      item->entry = (val) != NULL && strlen (val) > 0 \
+                    ? g_strdup (val) : NULL; \
+      update_what = TRUE; \
+    }
 
   #define update_new_pixbuf(val, entry, update_what) \
   if (!sn_item_pixbuf_equals (val, item->entry)) \
@@ -773,11 +773,26 @@ sn_item_get_all_properties_result (GObject      *source_object,
       }
     else if (!g_strcmp0 (name, "ToolTip"))
       {
-        g_variant_get (value, "(sa(iiay)ss)", NULL, NULL, &str_val1, &str_val2);
-        update_new_string (str_val1, tooltip_title, update_tooltip);
-        update_new_string (str_val2, tooltip_subtitle, update_tooltip);
-        g_free (str_val1);
-        g_free (str_val2);
+        cstr_val1 = g_variant_get_type_string (value);
+        if (!g_strcmp0 (cstr_val1, "(sa(iiay)ss)"))
+          {
+            g_variant_get (value, "(sa(iiay)ss)", NULL, NULL, &str_val1, &str_val2);
+            update_new_string (str_val1, tooltip_title, update_tooltip);
+            update_new_string (str_val2, tooltip_subtitle, update_tooltip);
+            g_free (str_val1);
+            g_free (str_val2);
+          }
+        else if (!g_strcmp0 (cstr_val1, "s"))
+          {
+            cstr_val1 = g_variant_get_string (value, NULL);
+            update_new_string (cstr_val1, tooltip_title, update_tooltip);
+            update_new_string (NULL, tooltip_subtitle, update_tooltip);
+          }
+        else
+          {
+            update_new_string (NULL, tooltip_title, update_tooltip);
+            update_new_string (NULL, tooltip_subtitle, update_tooltip);
+          }
       }
     else if (!g_strcmp0 (name, "ItemIsMenu"))
       {
