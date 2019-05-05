@@ -39,7 +39,7 @@ msgstr "_Maksimum ikonstørrelse (px):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
-msgstr "Arranger elementer på én række"
+msgstr "Opstil elementer på én række"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
 msgid "If enabled, ensure that the items are laid out in a single row"
