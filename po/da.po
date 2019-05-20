@@ -118,7 +118,7 @@ msgstr "Kendte elementer"
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
-"Leverer et panelområde til elementer for statusunderretter "
+"Giver et panelområde til elementer for statusunderretter "
 "(programindikatorer)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
