@@ -43,7 +43,7 @@ msgstr "Opstil elementer på én række"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
 msgid "If enabled, ensure that the items are laid out in a single row"
-msgstr "Hvis den er aktiveret, så sørg for at elementer lægges på én række"
+msgstr "Hvis den aktiveres, så lægges elementerne på én række"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -83,7 +83,7 @@ msgstr "Skjul elementer som standard"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
-msgstr "Når den er aktiveret, mærkes alle nye elementer som \"Skjult\""
+msgstr "Når den er aktiveres, så mærkes alle nye elementer som \"Skjult\""
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
