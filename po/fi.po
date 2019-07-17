@@ -36,7 +36,7 @@ msgstr "Tilailmoituksen kohteet"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "_Kuvakkeen maksimikoko (px):"
+msgstr "_Kuvakkeen enimmäiskoko (px):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
