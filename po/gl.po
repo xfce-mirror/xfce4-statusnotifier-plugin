@@ -121,7 +121,7 @@ msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
 "Fornece unha zona do panel para elementos de notificación de estado "
-"(indicadores de aplicativos)"
+"(indicadores de aplicacións)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
