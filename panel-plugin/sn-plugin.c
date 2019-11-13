@@ -182,7 +182,7 @@ sn_plugin_show_about (XfcePanelPlugin *panel_plugin)
                          "version", PACKAGE_VERSION,
                          "program-name", PACKAGE_NAME,
                          "comments", _("Provides a panel area for status notifier items (application indicators)"),
-                         "website", "https://goodies.xfce.org/projects/panel-plugins/xfce4-statusnotifier-plugin",
+                         "website", "https://docs.xfce.org/panel-plugins/xfce4-statusnotifier-plugin",
                          "authors", auth,
                          NULL);
 

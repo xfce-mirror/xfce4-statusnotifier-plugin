@@ -1,5 +1,6 @@
 What is it?
 ===========
+https://docs.xfce.org/panel-plugins/xfce4-statusnotifier-plugin
 
 A panel plugin which provides an area for status notifier items
 (application indicators).
@@ -11,5 +12,8 @@ The file 'INSTALL' contains generic installation instructions.
 
 How to report bugs?
 ===================
+You can report bugs and feature requests at http://bugzilla.xfce.org.
+Choose the product Panel Plugins and the component xfce4-statusnotifier-plugin.
 
-Report bugs to the author directly, until a bugtracker is available.
+You can also join the Xfce development mailing-list:
+https://mail.xfce.org/mailman/listinfo/xfce4-dev
