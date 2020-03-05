@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2017
-# Zmicer Turok <zmicerturok@gmail.com>, 2019
+# Zmicer Turok <nashtlumach@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: 2017-07-23 15:49+0000\n"
-"Last-Translator: Zmicer Turok <zmicerturok@gmail.com>, 2019\n"
+"Last-Translator: Zmicer Turok <nashtlumach@gmail.com>, 2020\n"
 "Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +32,7 @@ msgstr "Сапраўды хочаце ачысціць спіс вядомых �
 
 #: ../panel-plugin/sn-dialog.glade.h:1
 msgid "Status Notifier Items"
-msgstr "Элементы апавяшчэнняў пра стан"
+msgstr "Элементы апавяшчэнняў пра статус"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
@@ -60,7 +60,7 @@ msgstr "Сімвалічныя значкі"
 
 #: ../panel-plugin/sn-dialog.glade.h:8
 msgid "Load symbolic icons if available"
-msgstr "Загружаць сімвалічныя значкі калі яны даступныя"
+msgstr "Загружаць сімвалічныя значкі, калі яны даступныя"
 
 #: ../panel-plugin/sn-dialog.glade.h:9
 msgid "Appearance"
@@ -68,7 +68,7 @@ msgstr "Выгляд"
 
 #: ../panel-plugin/sn-dialog.glade.h:10
 msgid "Menu is primary action"
-msgstr "Меню з’яўляецца асноўным дзеяннем"
+msgstr "Вывад меню з’яўляецца асноўным дзеяннем"
 
 #: ../panel-plugin/sn-dialog.glade.h:11
 msgid "Left click will always display the menu for item"
@@ -119,9 +119,9 @@ msgstr "Вядомыя элементы"
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
-"Дае прастору на панэлі для элементаў апавяшчэнняў пра стан (індыкатараў "
+"Дае прастору на панэлі для элементаў апавяшчэнняў пра статус (індыкатараў "
 "праграм)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr "Убудова апавяшчэнняў пра стан"
+msgstr "Убудова апавяшчэнняў пра статус"
