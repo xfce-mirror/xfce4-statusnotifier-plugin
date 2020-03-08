@@ -1,3 +1,16 @@
+0.2.2
+======
+- Check tooltip type before deconstructing (Bug #15110)
+- Preferences: Improved layout (Bug #14676)
+- Fix building against xfce4-panel>=4.15
+- Translation Updates:
+  Belarusian, Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, English (Australia), Finnish, French,
+  Galician, German, Hebrew, Hungarian, Icelandic, Indonesian, Italian,
+  Japanese, Korean, Lithuanian, Malay, Norwegian Bokmål, Polish,
+  Portuguese, Portuguese (Brazil), Russian, Serbian, Slovak, Slovenian,
+  Spanish, Swedish, Turkish, Ukrainian
+
 0.2.1
 =====
 - Added support for rectangular icons even when square icons option is enabled
