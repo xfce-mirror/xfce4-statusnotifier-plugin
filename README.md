@@ -7,6 +7,10 @@ items (application indicators). Applications may use these items to display
 their status and interact with user. This technology is a modern alternative
 to systray and follows the [freedesktop.org specification](https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/) regarding status notification.
 
+As of xfce 4.15, the functionality provided by xfce4-statusnotifier-plugin
+has been integrated into the xfce4-panel's systray. Going forward, this plugin 
+is considered to be deprecated.
+
 ----
 
 ### Homepage
