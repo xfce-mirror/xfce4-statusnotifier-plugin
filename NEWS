@@ -1,3 +1,18 @@
+0.2.3
+======
+This is (final?) maintenance release of this plugin for users of Xfce <=4.14.
+From Xfce 4.16 onwards this functionality is provided by the
+xfce4-panel itself in the new "Status Tray" plugin.
+
+- Prevent crash when parsing properties (Fixes #6)
+- Create README.md and update configure.ac.in
+- Add basic GitLab pipeline
+- Update URLs from goodies.x.o to docs.x.o (Bug #16177)
+- Translation Updates:
+  Albanian, Belarusian, Chinese (China), Chinese (Taiwan), English
+  (Canada), Hebrew, Hungarian, Lithuanian, Norwegian Bokmål, Spanish,
+  Turkish
+
 0.2.2
 ======
 - Check tooltip type before deconstructing (Bug #15110)
