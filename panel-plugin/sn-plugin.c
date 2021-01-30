@@ -147,6 +147,15 @@ sn_plugin_mode_changed (XfcePanelPlugin     *panel_plugin,
 
 
 static void
+sn_plugin_unblock_menu (gpointer  data,
+                        GObject  *where_the_object_was)
+{
+  xfce_panel_plugin_unblock_menu (XFCE_PANEL_PLUGIN (data));
+}
+
+
+
+static void
 sn_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
 {
   SnPlugin *plugin = XFCE_SN_PLUGIN (panel_plugin);
@@ -156,7 +165,7 @@ sn_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
   if (dialog != NULL)
     {
       xfce_panel_plugin_block_menu (panel_plugin);
-      g_object_weak_ref (G_OBJECT (dialog), (GWeakNotify)xfce_panel_plugin_unblock_menu, panel_plugin);
+      g_object_weak_ref (G_OBJECT (dialog), sn_plugin_unblock_menu, panel_plugin);
     }
 }
 
