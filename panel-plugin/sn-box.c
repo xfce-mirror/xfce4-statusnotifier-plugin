@@ -177,6 +177,15 @@ sn_box_collect_known_items (SnBox      *box,
 
 
 static void
+sn_box_widget_unmap (GtkWidget *widget,
+                     gpointer   data)
+{
+  gtk_widget_unmap (widget);
+}
+
+
+
+static void
 sn_box_list_changed (SnBox    *box,
                      SnConfig *config)
 {
@@ -186,7 +195,7 @@ sn_box_list_changed (SnBox    *box,
   g_return_if_fail (XFCE_IS_SN_BOX (box));
   g_return_if_fail (XFCE_IS_SN_CONFIG (config));
 
-  gtk_container_foreach (GTK_CONTAINER (box), (GtkCallback)gtk_widget_unmap, NULL);
+  gtk_container_foreach (GTK_CONTAINER (box), sn_box_widget_unmap, NULL);
 
   known_items = sn_config_get_known_items (box->config);
   for (li = known_items; li != NULL; li = li->next)
