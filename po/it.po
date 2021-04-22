@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# bebabi34 <bebabi34@email.it>, 2017
+# bebabi34 <bebabi34@tiscali.it>, 2017
 # Nick Schermer <nick@xfce.org>, 2017
 # Francesco Galizzi <f.galizzi92@gmail.com>, 2017
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2018
