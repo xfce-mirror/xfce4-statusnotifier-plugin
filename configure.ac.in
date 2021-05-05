@@ -46,7 +46,6 @@ LT_INIT([disable-static])
 dnl ************************************
 dnl *** Check for standard functions ***
 dnl ************************************
-AC_HEADER_STDC
 AC_CHECK_FUNCS([])
 
 dnl ******************************
@@ -90,7 +89,7 @@ dnl *** Check for debugging support ***
 dnl ***********************************
 XDT_FEATURE_DEBUG()
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 icons/Makefile
 icons/48x48/Makefile
@@ -98,6 +97,7 @@ icons/scalable/Makefile
 panel-plugin/Makefile
 po/Makefile.in
 ])
+AC_OUTPUT
 
 dnl ***************************
 dnl *** Print configuration ***
