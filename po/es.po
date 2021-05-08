@@ -5,7 +5,7 @@
 # 
 # Translators:
 # prflr88 <prflr88@gmail.com>, 2017
-# Ignacio Poggi <ignaciop.3@gmail.com>, 2020
+# Toni Estévez <toni.estevez@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-28 16:38+0200\n"
 "PO-Revision-Date: 2017-07-23 15:49+0000\n"
-"Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>, 2020\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,25 +28,24 @@ msgstr "Borrar"
 
 #: ../panel-plugin/sn-dialog.c:369
 msgid "Are you sure you want to clear the list of known items?"
-msgstr "¿Está seguro que desea borrar la lista de elementos conocidos?"
+msgstr "¿Seguro que quiere borrar la lista de elementos conocidos?"
 
 #: ../panel-plugin/sn-dialog.glade.h:1
 msgid "Status Notifier Items"
-msgstr "Elementos de notificador de estado"
+msgstr "Elementos del notificador de estado"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "Tamaño _máximo de iconos (px):"
+msgstr "Tamaño _máximo del icono (px):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
-msgstr "Organizar elementos en una sola fila"
+msgstr "Organizar los elementos en una sola fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
 msgid "If enabled, ensure that the items are laid out in a single row"
 msgstr ""
-"Si está activado, asegúrese de que los elementos estén dispuestos en una "
-"sola fila"
+"Si se activa, garantiza que los elementos se dispongan en una sola fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
@@ -54,7 +53,8 @@ msgstr "Iconos cuadrados"
 
 #: ../panel-plugin/sn-dialog.glade.h:6
 msgid "Item buttons will take a square when it's possible"
-msgstr "Los botones de elementos serán cuadrados cuando sea posible"
+msgstr ""
+"Los botones de los elementos tomarán una forma cuadrada cuando sea posible"
 
 #: ../panel-plugin/sn-dialog.glade.h:7
 msgid "Symbolic icons"
@@ -62,7 +62,7 @@ msgstr "Iconos simbólicos"
 
 #: ../panel-plugin/sn-dialog.glade.h:8
 msgid "Load symbolic icons if available"
-msgstr "Cargar iconos simbólicos si están disponibles"
+msgstr "Cargar los iconos simbólicos si están disponibles"
 
 #: ../panel-plugin/sn-dialog.glade.h:9
 msgid "Appearance"
@@ -82,12 +82,11 @@ msgstr "Comportamiento"
 
 #: ../panel-plugin/sn-dialog.glade.h:13
 msgid "Hide items by default"
-msgstr "Ocultar elementos por omisión"
+msgstr "Ocultar los elementos predeterminados"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
-msgstr ""
-"Cuando está activada, todos los elementos nuevos se marcarán como «Ocultos»"
+msgstr "Si se activa, todos los nuevos elementos se marcarán como ocultos"
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
@@ -99,15 +98,15 @@ msgstr "Ocultar"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
-msgstr "Mover el elemento seleccionado una fila hacia arriba"
+msgstr "Subir el elemento seleccionado una fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:18
 msgid "Move the selected item one row down"
-msgstr "Mover el elemento seleccionado una fila hacia abajo"
+msgstr "Bajar el elemento seleccionado una fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
-msgstr "Borrar elementos _conocidos"
+msgstr "Borrar los elementos _conocidos"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
@@ -122,9 +121,9 @@ msgstr "Elementos conocidos"
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
-"Proporciona un área del panel para los elementos de notificaciones de estado"
-" (indicadores de aplicación)"
+"Proporciona un área del panel para los elementos del notificador de estado "
+"(indicadores de aplicación)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr "Complemento de notificador de estado"
+msgstr "Complemento del notificador de estado"
