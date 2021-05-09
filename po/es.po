@@ -126,4 +126,4 @@ msgstr ""
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr "Complemento del notificador de estado"
+msgstr "Complemento para el notificador de estado"
