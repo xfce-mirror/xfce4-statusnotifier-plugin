@@ -44,8 +44,7 @@ msgstr "Organizar los elementos en una sola fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:4
 msgid "If enabled, ensure that the items are laid out in a single row"
-msgstr ""
-"Si se activa, garantiza que los elementos se dispongan en una sola fila"
+msgstr "Si se activa, los elementos se disponen en una sola fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:5
 msgid "Square icons"
