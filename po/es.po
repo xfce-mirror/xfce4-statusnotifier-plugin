@@ -36,7 +36,7 @@ msgstr "Elementos del notificador de estado"
 
 #: ../panel-plugin/sn-dialog.glade.h:2
 msgid "_Maximum icon size (px):"
-msgstr "Tamaño _máximo del icono (px):"
+msgstr "_Tamaño máximo del icono (px):"
 
 #: ../panel-plugin/sn-dialog.glade.h:3
 msgid "Arrange items in a single row"
@@ -85,7 +85,7 @@ msgstr "Ocultar los elementos predeterminados"
 
 #: ../panel-plugin/sn-dialog.glade.h:14
 msgid "When enabled, all new items will be marked as \"Hidden\""
-msgstr "Si se activa, todos los nuevos elementos se marcarán como ocultos"
+msgstr "Si se activa, todos los elementos nuevos se marcarán como ocultos"
 
 #: ../panel-plugin/sn-dialog.glade.h:15
 msgid "Item"
@@ -93,7 +93,7 @@ msgstr "Elemento"
 
 #: ../panel-plugin/sn-dialog.glade.h:16
 msgid "Hidden"
-msgstr "Ocultar"
+msgstr "Oculto"
 
 #: ../panel-plugin/sn-dialog.glade.h:17
 msgid "Move the selected item one row up"
@@ -105,7 +105,7 @@ msgstr "Bajar el elemento seleccionado una fila"
 
 #: ../panel-plugin/sn-dialog.glade.h:19
 msgid "C_lear Known Items"
-msgstr "Borrar los elementos _conocidos"
+msgstr "_Borrar los elementos conocidos"
 
 #: ../panel-plugin/sn-dialog.glade.h:20
 msgid "Resets the list of items and their visibility settings"
@@ -120,9 +120,9 @@ msgstr "Elementos conocidos"
 msgid ""
 "Provides a panel area for status notifier items (application indicators)"
 msgstr ""
-"Proporciona un área del panel para los elementos del notificador de estado "
-"(indicadores de aplicación)"
+"Área en el panel para los elementos del notificador de estado (indicadores "
+"de aplicación)"
 
 #: ../panel-plugin/statusnotifier.desktop.in.h:1
 msgid "Status Notifier Plugin"
-msgstr "Complemento para el notificador de estado"
+msgstr "Notificador de estado"
